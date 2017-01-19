@@ -82,6 +82,10 @@ AC_SUBST([GTEST_LDFLAGS])
 AC_SUBST([GTEST_LIBS])
 
 # Checks for libraries.
+AC_CHECK_PROGS([DOXYGEN], [doxygen])
+if test -z "$DOXYGEN";
+   then AC_MSG_WARN([Doxygen not found - continuing without Doxygen support])
+fi
 
 # Checks for header files.
 
@@ -94,6 +98,7 @@ AC_CONFIG_FILES([Makefile
                  lib/gtest/Makefile
                  src/Makefile
                  tests/Makefile
+                 docs/Makefile
                  ])
 AC_OUTPUT
 
