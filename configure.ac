@@ -1,6 +1,6 @@
 AC_PREREQ([2.69])
-AC_INIT([bin-packing-solver], [0.1.0], [n.b.agostini@gmail.com])
-AC_CONFIG_SRCDIR([src/func.h])
+AC_INIT([problem-solver], [0.1.0], [n.b.agostini@gmail.com])
+AC_CONFIG_SRCDIR([src/util.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -29,7 +29,7 @@ AC_ARG_ENABLE([gcc-warnings],
                     [turn on lots of GCC warnings (for developers)])],
     [case "$enableval" in
         yes|no) ;;
-        *)      AC_MSG_ERROR([bad value ${enableval} for gcc-warnings option]) ;; 
+        *)      AC_MSG_ERROR([bad value ${enableval} for gcc-warnings option]) ;;
     esac
     gcc_warnings=$enableval],
     [gcc_warnings=no]
@@ -46,7 +46,7 @@ AC_ARG_ENABLE([gcc-debug],
                     [turn on GCC debug flags (for developers)])],
     [case "$enableval" in
         yes|no) ;;
-        *)      AC_MSG_ERROR([bad value ${enableval} for gcc-debug option]) ;; 
+        *)      AC_MSG_ERROR([bad value ${enableval} for gcc-debug option]) ;;
     esac
     gcc_debug=$enableval],
     [gcc_debug=no]
@@ -62,7 +62,7 @@ fi
 # Configure pthreads.
 ACX_PTHREAD([have_pthread=yes])
 
-# Define gtest variables 
+# Define gtest variables
 GTEST_VERSION="1.7.0"
 if test "x$have_pthread" = "xyes"; then
   GTEST_CPPFLAGS="-DGTEST_HAS_PTHREAD=1"
@@ -86,7 +86,7 @@ AC_CHECK_PROGS([DOXYGEN], [doxygen])
 if test -z "$DOXYGEN";
    then AC_MSG_WARN([Doxygen not found - continuing without Doxygen support])
 fi
-AM_CONDITIONAL([HAVE_DOXYGEN], 
+AM_CONDITIONAL([HAVE_DOXYGEN],
 [test -n "$DOXYGEN"])AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([docs/Doxyfile])])
 
 
@@ -106,7 +106,7 @@ AC_CONFIG_FILES([Makefile
 AC_OUTPUT
 
 AC_MSG_RESULT([
-minimal-gtest-autotools $VERSION is now configured
+$PACKAGE_NAME $VERSION is now configured
 Configure Information:
   C Compiler        : $CC
     DEFS            :   $DEFS
@@ -122,7 +122,7 @@ Configure Information:
     LDFLAGS         :   $LDFLAGS
     LIBS            :   $LIBS
 
-  Google Test 
+  Google Test
     GTEST_CPPFLAGS  : $GTEST_CPPFLAGS
     GTEST_CXXFLAGS  : $GTEST_CXXFLAGS
     GTEST_LDFLAGS   : $GTEST_LDFLAGS

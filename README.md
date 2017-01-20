@@ -60,7 +60,7 @@ Under construction
 
 ##### Credits
 
-Gtest Autotools project setup was extracted from [minimal-gtest-autotools](https://github.com/octol/minimal-gtest-autotools).
+Gtest+Autotools project setup was extracted from [minimal-gtest-autotools](https://github.com/octol/minimal-gtest-autotools).
 
 ----------
 ##### Authors

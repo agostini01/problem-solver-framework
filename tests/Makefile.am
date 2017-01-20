@@ -6,10 +6,10 @@ AM_LDFLAGS = $(GTEST_LDFLAGS) $(GTEST_LIBS) \
 
 # TESTS -- Programs run automatically by "make check"
 # check_PROGRAMS -- Programs built by "make check" but not necessarily run
-TESTS = 
-check_PROGRAMS = 
+TESTS =
+check_PROGRAMS =
 
-TESTS += func_test
-check_PROGRAMS += func_test
-func_test_SOURCES = func_test.cpp
-func_test_LDADD = $(top_srcdir)/src/func.o
+TESTS += testing
+check_PROGRAMS += testing
+testing_SOURCES = testing.cpp
+testing_LDADD = $(top_srcdir)/src/util.o

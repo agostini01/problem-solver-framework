@@ -17,19 +17,9 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "util.h"
-#include <exception>
-#include <iostream>
+#ifndef UTIL_H
+#define UTIL_H
 
-int main(int argc, char **argv) {
-  // Main exception handler
+int InitialTest();
 
-  try {
-    // Run main program
-    std::cout << "Result of InitialTest(): " << InitialTest() << std::endl;
-    return 0;
-  } catch (std::exception &e) {
-    std::cerr << e.what();
-    return 1;
-  }
-}
+#endif // UTIL

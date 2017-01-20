@@ -18,18 +18,8 @@
  */
 
 #include "util.h"
-#include <exception>
-#include <iostream>
+#include "gtest/gtest.h"
 
-int main(int argc, char **argv) {
-  // Main exception handler
-
-  try {
-    // Run main program
-    std::cout << "Result of InitialTest(): " << InitialTest() << std::endl;
-    return 0;
-  } catch (std::exception &e) {
-    std::cerr << e.what();
-    return 1;
-  }
+TEST(InitialTest, Test1) {
+    EXPECT_EQ(1, InitialTest());
 }
