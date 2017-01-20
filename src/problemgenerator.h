@@ -20,11 +20,20 @@
 #ifndef PROBLEMGENERATOR_H
 #define PROBLEMGENERATOR_H
 
+#include <vector>
+#include <memory>
+#include "problem.h"
 
 class ProblemGenerator
 {
 public:
-    ProblemGenerator();
+    ProblemGenerator(std::vector<std::shared_ptr<Problem>>& problems);
+
+    /// Generate a Problem instance using util.h list generation
+    void GetProblem(const unsigned int & problem_size);
+
+private:
+  std::vector<std::shared_ptr<Problem>>& m_problems;
 };
 
 #endif // PROBLEMGENERATOR_H

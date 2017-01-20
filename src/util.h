@@ -20,6 +20,19 @@
 #ifndef UTIL_H
 #define UTIL_H
 
+#include <list>
+#include <stdlib.h>
+
+/// Returns (int) 1
 int InitialTest();
+
+/// Change default random seed
+void SetRandomSeed(const unsigned int & seed_number = 1);
+
+/// Generates a list of unsigned using a random uniform distribution. The list
+/// is automatically reverse sorted.
+///
+/// list_size gives the size of the list
+std::list<unsigned int> GetRandomList(const unsigned int & list_size);
 
 #endif // UTIL

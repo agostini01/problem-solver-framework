@@ -23,3 +23,23 @@ int InitialTest()
 {
     return 1;
 }
+
+void SetRandomSeed(const unsigned int & seed_number)
+{
+  srand(seed_number);
+}
+
+
+std::list<unsigned int> GetRandomList(const unsigned int & list_size)
+{
+  std::list<unsigned int> a_list;
+  int i;
+  for (i = 0; i < list_size; i++) {
+    a_list.push_back(rand()%100);
+  }
+
+  a_list.sort();
+  a_list.reverse();
+
+  return a_list;
+}

@@ -18,8 +18,32 @@
  */
 
 #include "problem.h"
+#include <sstream>
 
 Problem::Problem()
 {
 
+}
+
+Problem::Problem(std::list<unsigned int> a_problem)
+  : m_problem_instance(a_problem)
+{
+
+}
+
+std::string Problem::ToString() const
+{
+  std::stringstream combinded_string;
+
+  for (std::list<unsigned int>::const_iterator it=m_problem_instance.begin();
+    it != m_problem_instance.end(); ++it)
+  {
+    combinded_string << ' ' << *it;
+  }
+  return combinded_string.str();
+}
+
+void Problem::PushBackValue(const unsigned int& value)
+{
+  m_problem_instance.push_back(value);
 }

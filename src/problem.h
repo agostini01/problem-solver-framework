@@ -20,11 +20,28 @@
 #ifndef PROBLEM_H
 #define PROBLEM_H
 
+#include <list>
+#include <string>
 
 class Problem
 {
 public:
-    Problem();
+  Problem();
+
+  Problem(std::list<unsigned int> a_problem);
+
+
+  /// Convert the problem to a human readable string
+  std::string ToString() const;
+
+  /// Push Back value to problem_instance
+  void PushBackValue(const unsigned int& value);
+
+private:
+  std::list<unsigned int> m_problem_instance;
+  unsigned int m_problem_id;
 };
+
+
 
 #endif // PROBLEM_H

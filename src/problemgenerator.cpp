@@ -19,7 +19,18 @@
 
 #include "problemgenerator.h"
 
-ProblemGenerator::ProblemGenerator()
+#include "util.h"
+
+ProblemGenerator::ProblemGenerator(
+  std::vector<std::shared_ptr<Problem>>& problems)
+  : m_problems(problems)
 {
+
+}
+
+void ProblemGenerator::GetProblem(const unsigned int & problem_size)
+{
+  std::shared_ptr<Problem> a_problem (new Problem(GetRandomList(problem_size)));
+  m_problems.push_back(a_problem);
 
 }
