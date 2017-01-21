@@ -1,0 +1,13 @@
+../res/scholl/HARD5.txt
+../res/scholl/HARD8.txt
+../res/scholl/N4C3W4_R.txt
+../res/scholl/N4W4B3R6.txt
+../res/scholl/N4W4B3R9.txt
+../res/scholl/HARD6.txt
+../res/scholl/HARD9.txt
+../res/scholl/N4C3W4_S.txt
+../res/scholl/N4W4B3R7.txt
+../res/scholl/HARD7.txt
+../res/scholl/N4C3W4_Q.txt
+../res/scholl/N4C3W4_T.txt
+../res/scholl/N4W4B3R8.txt

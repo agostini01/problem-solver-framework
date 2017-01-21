@@ -65,20 +65,10 @@ int MainLoop(){
 
   FileIO file_io;
 
-  std::vector<unsigned int> v;
-  v =  file_io.ReadFromFileToVector("../res/N4W4B3R9.txt");
-
-  for (auto it = v.begin(); it != v.end(); ++it)
-  {
-    std::cerr<<*it<< " ";
-  }
-
   ProblemGenerator problem_generator(g_my_problems);
-  problem_generator.GetProblem(100);
-  problem_generator.GetProblem(100);
-  problem_generator.GetProblem(100);
+  problem_generator.GetProblemFromListOfFiles("../res/list_of_files.txt");
 
-  //std::cout<<g_my_problems.size()<<std::endl;
+  std::cerr<<"Number of instances: "<< g_my_problems.size()<<std::endl;
   for (auto it = g_my_problems.begin(); it != g_my_problems.end(); ++it)
   {
     std::cerr<<(*it)->ToString()<<std::endl<<std::endl<<std::endl;

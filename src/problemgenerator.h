@@ -35,7 +35,9 @@ public:
 
 
     /// Generate a Problem from reading from a file
-    void GetProblemFromFile(const char & file_name);
+    void GetProblemFromFile(const std::string & file_name);
+
+    void GetProblemFromListOfFiles(const std::string & file_name);
 
     unsigned int GenerateProblemId();
 

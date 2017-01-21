@@ -20,6 +20,8 @@
 #include "problemgenerator.h"
 
 #include "util.h"
+#include "fileio.h"
+#include <iostream>
 
 ProblemGenerator::ProblemGenerator(
   std::vector<std::shared_ptr<Problem>>& problems)
@@ -43,4 +45,35 @@ void ProblemGenerator::GetProblem(const unsigned int & problem_size,
 unsigned int ProblemGenerator::GenerateProblemId()
 {
   return m_next_id++;
+}
+
+void ProblemGenerator::GetProblemFromFile(const std::string & file_name)
+{
+  FileIO file_io;
+
+  std::list<unsigned int> l;
+  l =  file_io.ReadFromFileToList(file_name);
+
+  l.pop_front(); // Discarts the problem size
+  unsigned int bucket_size= l.front();
+  l.pop_front(); // Discarts the Bin capacity (bucket size)
+
+  std::shared_ptr<Problem> a_problem(
+              new Problem(l,
+                          bucket_size,
+                          GenerateProblemId()));
+
+  m_problems.push_back(a_problem);
+}
+
+void ProblemGenerator::GetProblemFromListOfFiles(const std::string & file_name)
+{
+  FileIO file_io;
+  std::vector<std::string> v;
+  v = file_io.ReadFilesList(file_name);
+  for (auto it = v.begin(); it != v.end(); ++it)
+  {
+    std::cerr<<*it<<'\n';
+    GetProblemFromFile(*it);
+  }
 }

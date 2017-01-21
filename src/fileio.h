@@ -21,6 +21,7 @@
 #define FILEIO_H
 
 #include <vector>
+#include <list>
 #include <string>
 
 class FileIO
@@ -28,8 +29,9 @@ class FileIO
 public:
     FileIO();
 
-    std::vector<unsigned int> ReadFromFileToVector(const char * file_name);
-    std::vector<std::string> ReadFilesList(const char * file_name);
+    std::vector<unsigned int> ReadFromFileToVector(const std::string & file_name);
+    std::list<unsigned int> ReadFromFileToList(const std::string & file_name);
+    std::vector<std::string> ReadFilesList(const std::string & file_name);
 };
 
 #endif // FILEIO_H
