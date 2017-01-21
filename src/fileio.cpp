@@ -18,8 +18,46 @@
  */
 
 #include "fileio.h"
+#include <fstream>
+#include <iostream>
+#include <iterator>
+
 
 FileIO::FileIO()
 {
 
+}
+
+
+std::vector<unsigned int> FileIO::ReadFromFileToVector(const char * file_name)
+{
+  std::ifstream input_stream(file_name);
+  if(input_stream.good())
+  {
+    std::istream_iterator<unsigned int> start(input_stream), end;
+    std::vector<unsigned int> numbers(start, end);
+    return numbers;
+  }
+  else
+  {
+    std::cerr<<"Bad file name:"<<file_name<<"\n";
+    return std::vector<unsigned int>();
+  }
+}
+
+
+std::vector<std::string> FileIO::ReadFilesList(const char * file_name)
+{
+std::ifstream input_stream(file_name);
+if(input_stream.good())
+{
+  std::istream_iterator<std::string> start(input_stream), end;
+  std::vector<std::string> files(start, end);
+  return files;
+}
+else
+{
+  std::cerr<<"Bad file name:"<<file_name<<"\n";
+  return std::vector<std::string>();
+}
 }

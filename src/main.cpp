@@ -26,6 +26,7 @@
 #include "problem.h"
 #include "solution.h"
 #include "util.h"
+#include "fileio.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -61,6 +62,16 @@ void ProcessOptions(){
 
 /// Main simulation loop
 int MainLoop(){
+
+  FileIO file_io;
+
+  std::vector<unsigned int> v;
+  v =  file_io.ReadFromFileToVector("../res/N4W4B3R9.txt");
+
+  for (auto it = v.begin(); it != v.end(); ++it)
+  {
+    std::cerr<<*it<< " ";
+  }
 
   ProblemGenerator problem_generator(g_my_problems);
   problem_generator.GetProblem(100);

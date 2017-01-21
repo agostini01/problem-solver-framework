@@ -20,11 +20,16 @@
 #ifndef FILEIO_H
 #define FILEIO_H
 
+#include <vector>
+#include <string>
 
 class FileIO
 {
 public:
     FileIO();
+
+    std::vector<unsigned int> ReadFromFileToVector(const char * file_name);
+    std::vector<std::string> ReadFilesList(const char * file_name);
 };
 
 #endif // FILEIO_H

@@ -33,6 +33,10 @@ public:
     void GetProblem(const unsigned int & problem_size,
                     const unsigned int & bucket_size=100);
 
+
+    /// Generate a Problem from reading from a file
+    void GetProblemFromFile(const char & file_name);
+
     unsigned int GenerateProblemId();
 
 private:
