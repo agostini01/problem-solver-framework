@@ -43,6 +43,8 @@ public:
   unsigned int GetMaxNumberOfBucketsK() const;
   unsigned int GetProblemId() const;
 
+  std::list<unsigned int> GetWeights() const;
+
 
 private:
 

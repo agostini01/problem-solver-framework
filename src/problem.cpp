@@ -74,3 +74,8 @@ unsigned int Problem::GetProblemId() const
 {
   return m_problem_id;
 }
+
+std::list<unsigned int> Problem::GetWeights() const
+{
+  return m_weights;
+}

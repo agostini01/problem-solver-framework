@@ -66,7 +66,7 @@ void ProblemGenerator::GetProblemFromFile(const std::string & file_name)
   m_problems.push_back(a_problem);
 }
 
-void ProblemGenerator::GetProblemFromListOfFiles(const std::string & file_name)
+void ProblemGenerator::GetProblemsFromListOfFiles(const std::string & file_name)
 {
   FileIO file_io;
   std::vector<std::string> v;

@@ -27,6 +27,7 @@
 #include "solution.h"
 #include "util.h"
 #include "fileio.h"
+#include "exhaustivesolver.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -66,13 +67,17 @@ int MainLoop(){
   FileIO file_io;
 
   ProblemGenerator problem_generator(g_my_problems);
-  problem_generator.GetProblemFromListOfFiles("../res/list_of_files.txt");
+  problem_generator.GetProblemsFromListOfFiles("../res/list_of_files.txt");
 
   std::cerr<<"Number of instances: "<< g_my_problems.size()<<std::endl;
   for (auto it = g_my_problems.begin(); it != g_my_problems.end(); ++it)
   {
     std::cerr<<(*it)->ToString()<<std::endl<<std::endl<<std::endl;
   }
+
+  ExhaustiveSolver problem_solver(g_my_problems, g_my_solutions);
+  //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+  problem_solver.SolveAll();
 
 }
 

@@ -21,11 +21,24 @@
 #define EXHAUSTIVESOLVER_H
 
 #include "solver.h"
+#include "problem.h"
+#include "solution.h"
+#include <vector>
+#include <memory>
 
 class ExhaustiveSolver : public Solver
 {
 public:
-    ExhaustiveSolver();
+  ExhaustiveSolver(
+    std::vector<std::shared_ptr<Problem>>& problems,
+    std::vector<std::shared_ptr<Solution>>& solutions);
+
+  std::shared_ptr<Solution> Solve(std::shared_ptr<Problem> the_problem);
+  void SolveAll();
+
+private:
+  std::vector<std::shared_ptr<Problem>> &m_problems;
+  std::vector<std::shared_ptr<Solution>>&m_solutions;
 };
 
 #endif // EXHAUSTIVESOLVER_H

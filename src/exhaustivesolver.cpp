@@ -18,8 +18,87 @@
  */
 
 #include "exhaustivesolver.h"
+#include <iostream>
 
-ExhaustiveSolver::ExhaustiveSolver()
+ExhaustiveSolver::ExhaustiveSolver(
+  std::vector<std::shared_ptr<Problem>>& problems,
+  std::vector<std::shared_ptr<Solution>>& solutions)
+  : m_problems(problems)
+  , m_solutions(solutions)
 {
+
+}
+
+
+std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_problem)
+{
+
+  // Variables used to create a solution
+  // Everything is passed by copy (not by reference)
+  unsigned int bucket_capacity =  the_problem->GetMaxSizeOfBucket();
+  unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
+  unsigned int problem_id = the_problem->GetProblemId();
+  std::list<unsigned int> problem_weights =  the_problem->GetWeights();
+
+
+  // Just for the sake of sanity: printing Everything
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<"====================================================="<<std::endl;
+  std::cerr<<"=================Starting Solution=================="<<std::endl;
+  std::cerr<< "Problem id: " << problem_id<<'\n';
+  std::cerr<< "Max Size of Bucket: " << bucket_capacity<<'\n';
+  std::cerr<< "Target number of buckets: " << max_number_of_buckets<<'\n';
+
+  std::cerr<< "Item weights: \n";
+  for (std::list<unsigned int>::iterator it=problem_weights.begin();
+    it != problem_weights.end(); ++it)
+  {
+    std::cerr << *it << ' ' ;
+  }
+
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<"-----------------------------------------------------"<<std::endl;
+
+
+  // TODO MATAN - Execute Algorithm
+  // TODO MATAN - Implement Timing
+  // TODO MATAN - As we have talked, we should keep track of all the best
+  // To do that, we will have to use nested containers.
+  // I was thinking that the possible solution should be a
+  //    list (or vector) of X optimal lists (or vectors) of K lists (or vectors)
+  //                           - one for each bucket - that contain the weights.
+  // std::list< std::list< std::list< unsigned int > > > optimal_solutions_list
+  // std::list< std::list<unsigned int > >            a_optimal_solution_with_k_buckets
+  // std::list< unsigned int > >                      weights_in_a_bucket
+
+  // ps. In old c we could not have <<<>>> with spaces in between.
+
+  // TODO MATAN - You can change the order of the files in
+  //              root/res/list_of_files.txt, to select a simple instance
+
+  // TODO Solution class is not ready yet. I can implement it later,
+  std::shared_ptr<Solution> a_solution = std::make_shared<Solution>();
+  return a_solution;
+}
+
+void ExhaustiveSolver::SolveAll()
+{
+
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<std::endl;
+  std::cerr<<"#####################################################"<<std::endl;
+  std::cerr<<"=================Starting Solutions=================="<<std::endl;
+  std::cerr<<"#####################################################"<<std::endl;
+
+  for (auto it = m_problems.begin(); it != m_problems.end(); ++it)
+  {
+    // push back the solution for the problem
+    m_solutions.push_back(Solve(*it));
+  }
 
 }
