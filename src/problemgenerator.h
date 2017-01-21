@@ -30,10 +30,14 @@ public:
     ProblemGenerator(std::vector<std::shared_ptr<Problem>>& problems);
 
     /// Generate a Problem instance using util.h list generation
-    void GetProblem(const unsigned int & problem_size);
+    void GetProblem(const unsigned int & problem_size,
+                    const unsigned int & bucket_size=100);
+
+    unsigned int GenerateProblemId();
 
 private:
   std::vector<std::shared_ptr<Problem>>& m_problems;
+  unsigned int m_next_id;
 };
 
 #endif // PROBLEMGENERATOR_H

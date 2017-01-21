@@ -21,12 +21,21 @@
 #include <sstream>
 
 Problem::Problem()
+  : m_weights(std::list<unsigned int>())
+  , m_max_size_of_bucket(0)
+  , m_max_number_of_buckets_k(0)
+  , m_problem_id(0)
 {
 
 }
 
-Problem::Problem(std::list<unsigned int> a_problem)
-  : m_problem_instance(a_problem)
+Problem::Problem(std::list<unsigned int> weights,
+                  unsigned int bucket_size,
+                  unsigned int problem_id)
+  : m_weights(weights)
+  , m_max_size_of_bucket(bucket_size)
+  , m_max_number_of_buckets_k(0)
+  , m_problem_id(problem_id)
 {
 
 }
@@ -34,16 +43,34 @@ Problem::Problem(std::list<unsigned int> a_problem)
 std::string Problem::ToString() const
 {
   std::stringstream combinded_string;
+  combinded_string<< "Problem id: " << GetProblemId()<<'\n';
+  combinded_string<< "Max Size of Bucket: " << GetMaxSizeOfBucket()<<'\n';
 
-  for (std::list<unsigned int>::const_iterator it=m_problem_instance.begin();
-    it != m_problem_instance.end(); ++it)
+  combinded_string<< "Item weights: \n";
+  for (std::list<unsigned int>::const_iterator it=m_weights.begin();
+    it != m_weights.end(); ++it)
   {
-    combinded_string << ' ' << *it;
+    combinded_string << *it << ' ' ;
   }
   return combinded_string.str();
 }
 
 void Problem::PushBackValue(const unsigned int& value)
 {
-  m_problem_instance.push_back(value);
+  m_weights.push_back(value);
+}
+
+unsigned int Problem::GetMaxSizeOfBucket() const
+{
+  return m_max_size_of_bucket;
+}
+
+unsigned int Problem::GetMaxNumberOfBucketsK() const
+{
+  return m_max_number_of_buckets_k;
+}
+
+unsigned int Problem::GetProblemId() const
+{
+  return m_problem_id;
 }

@@ -24,13 +24,23 @@
 ProblemGenerator::ProblemGenerator(
   std::vector<std::shared_ptr<Problem>>& problems)
   : m_problems(problems)
+  , m_next_id(0)
 {
 
 }
 
-void ProblemGenerator::GetProblem(const unsigned int & problem_size)
+void ProblemGenerator::GetProblem(const unsigned int & problem_size,
+                                  const unsigned int & bucket_size)
 {
-  std::shared_ptr<Problem> a_problem (new Problem(GetRandomList(problem_size)));
+  std::shared_ptr<Problem> a_problem(
+              new Problem(GetRandomList(problem_size),
+                                bucket_size,
+                                GenerateProblemId()));
   m_problems.push_back(a_problem);
 
+}
+
+unsigned int ProblemGenerator::GenerateProblemId()
+{
+  return m_next_id++;
 }

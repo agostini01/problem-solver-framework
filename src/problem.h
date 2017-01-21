@@ -26,10 +26,12 @@
 class Problem
 {
 public:
+
   Problem();
 
-  Problem(std::list<unsigned int> a_problem);
-
+  Problem ( std::list<unsigned int> a_problem
+          , unsigned int bucket_size
+          , unsigned int problem_id);
 
   /// Convert the problem to a human readable string
   std::string ToString() const;
@@ -37,11 +39,24 @@ public:
   /// Push Back value to problem_instance
   void PushBackValue(const unsigned int& value);
 
+  unsigned int GetMaxSizeOfBucket() const;
+  unsigned int GetMaxNumberOfBucketsK() const;
+  unsigned int GetProblemId() const;
+
+
 private:
-  std::list<unsigned int> m_problem_instance;
+
+  /// List of weights
+  std::list<unsigned int> m_weights;
+
+  /// Bucket size
+  unsigned int m_max_size_of_bucket;
+
+  /// Maximun number of buckets
+  unsigned int m_max_number_of_buckets_k;
+
+  /// Problem
   unsigned int m_problem_id;
 };
-
-
 
 #endif // PROBLEM_H
