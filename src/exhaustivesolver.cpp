@@ -19,6 +19,8 @@
 
 #include "exhaustivesolver.h"
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 ExhaustiveSolver::ExhaustiveSolver(
   std::vector<std::shared_ptr<Problem>>& problems,
@@ -27,6 +29,27 @@ ExhaustiveSolver::ExhaustiveSolver(
   , m_solutions(solutions)
 {
 
+}
+
+bool Bin::add_item(int item) {
+  std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl; 
+  if (curr_size + item < max_size) {
+    items.insert(items.end(), item);
+    curr_size+= item;
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int Bin::get_size() {
+  return curr_size;
+}
+
+Bin::Bin(int max_weight) {
+  max_size = max_weight;
+  curr_size = 0;
+  std::cerr << "Making new Bin. Max size: " << max_size << " Current size: " << curr_size << std::endl;
 }
 
 
@@ -52,13 +75,38 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
   std::cerr<< "Target number of buckets: " << max_number_of_buckets<<'\n';
 
   std::cerr<< "Item weights: \n";
-  for (std::list<unsigned int>::iterator it=problem_weights.begin();
-    it != problem_weights.end(); ++it)
-  {
-    std::cerr << *it << ' ' ;
-  }
+  do {
+    std::vector<Bin> list_of_bins;
+    list_of_bins.push_back(Bin(bucket_capacity));
+    for (std::list<unsigned int>::iterator it=problem_weights.begin();
+      it != problem_weights.end(); ++it)
+    {
+     std::cerr << *it << ' ';
+    }
+    std::cerr << std::endl;
+    for (std::list<unsigned int>::iterator it=problem_weights.begin();
+      it != problem_weights.end(); ++it)
+    {
+      bool added = false;
+      // std::cerr << "Attempting to place item: " << *it << ' ' << std::endl ;
+      for (int i = 0 ; i < list_of_bins.size(); i++) {
+        std::cerr << "Bin #: " << i << " Current bin's size: " << list_of_bins[i].get_size() << std::endl;
+        if (list_of_bins[i].add_item(*it)) {
+            added = true;
+            break;
+            // std::cerr <<  "Item Didn't fit" << std::endl;
+        }
+      }
+      if (!added) {
+          Bin new_bin = Bin(bucket_capacity);
+          new_bin.add_item(*it);
+          list_of_bins.push_back(new_bin);
+      }
+    }
+    std::cerr << "Fit in " << list_of_bins.size() << " Bins." << std::endl;
 
-  std::cerr<<std::endl;
+    std::cerr<<std::endl;
+  } while (std::next_permutation(problem_weights.begin(), problem_weights.end()));
   std::cerr<<std::endl;
   std::cerr<<std::endl;
   std::cerr<<"-----------------------------------------------------"<<std::endl;
