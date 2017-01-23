@@ -34,8 +34,8 @@ ExhaustiveSolver::ExhaustiveSolver(
 }
 
 bool Bin::add_item(int item) {
-  std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl; 
-  if (curr_size + item < max_size) {
+  //std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl; 
+  if (curr_size + item <= max_size) {
     items.insert(items.end(), item);
     curr_size+= item;
     return true;
@@ -51,7 +51,7 @@ int Bin::get_size() {
 Bin::Bin(int max_weight) {
   max_size = max_weight;
   curr_size = 0;
-  std::cerr << "Making new Bin. Max size: " << max_size << " Current size: " << curr_size << std::endl;
+//  std::cerr << "Making new Bin. Max size: " << max_size << " Current size: " << curr_size << std::endl;
 }
 
 
@@ -90,9 +90,9 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
       it != problem_weights.end(); ++it)
     {
       bool added = false;
-      // std::cerr << "Attempting to place item: " << *it << ' ' << std::endl ;
+     //std::cerr << "Attempting to place item: " << *it << ' ' << std::endl ;
       for (int i = 0 ; i < list_of_bins.size(); i++) {
-        std::cerr << "Bin #: " << i << " Current bin's size: " << list_of_bins[i].get_size() << std::endl;
+        // std::cerr << "Bin #: " << i << " Current bin's size: " << list_of_bins[i].get_size() << std::endl;
         if (list_of_bins[i].add_item(*it)) {
             added = true;
             break;
@@ -114,7 +114,7 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
   std::cerr<<"-----------------------------------------------------"<<std::endl;
 
   // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
-  PermuteList(problem_weights);
+  // PermuteList(problem_weights);
   // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
 
 
