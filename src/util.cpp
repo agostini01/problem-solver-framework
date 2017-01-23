@@ -18,6 +18,9 @@
  */
 
 #include "util.h"
+#include <iostream>
+#include <algorithm>
+#include <memory>
 
 int InitialTest()
 {
@@ -42,4 +45,38 @@ std::list<unsigned int> GetRandomList(const unsigned int & list_size)
   a_list.reverse();
 
   return a_list;
+}
+
+void PermuteList(std::list<unsigned int> input_list)
+{
+    int array_size = input_list.size();
+    unsigned int* input_array =  new unsigned int[array_size];
+    copy(input_list.begin(),input_list.end(),input_array);
+
+    int i;
+    do
+    {
+        // Just print for visualization
+        std::cerr <<"Array\t";
+        for (i=0;i<array_size;++i)
+        {
+            std::cerr << input_array[i] << ' ';
+        }
+        std::cerr << '\n';
+
+        // Does the copying form array to list
+        std::list<unsigned int> tempList(input_array,input_array+array_size);
+
+        // Just print for visualization
+        std::cerr <<"List\t";
+        for (auto it=tempList.begin();it !=tempList.end(); ++it)
+        {
+            std::cerr << *it << ' ';
+        }
+        std::cerr << '\n';
+
+    }
+    while ( std::next_permutation(input_array,input_array+input_list.size()) );
+
+    delete[] input_array;
 }

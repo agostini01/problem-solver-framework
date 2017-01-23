@@ -35,4 +35,7 @@ void SetRandomSeed(const unsigned int & seed_number = 1);
 /// list_size gives the size of the list
 std::list<unsigned int> GetRandomList(const unsigned int & list_size);
 
+void PermuteList(std::list<unsigned int> input_list);
+
+
 #endif // UTIL

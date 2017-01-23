@@ -22,6 +22,8 @@
 #include <vector>
 #include <algorithm>
 
+#include "util.h" // TODO REMOVE!!!!!
+
 ExhaustiveSolver::ExhaustiveSolver(
   std::vector<std::shared_ptr<Problem>>& problems,
   std::vector<std::shared_ptr<Solution>>& solutions)
@@ -110,6 +112,10 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
   std::cerr<<std::endl;
   std::cerr<<std::endl;
   std::cerr<<"-----------------------------------------------------"<<std::endl;
+
+  // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
+  PermuteList(problem_weights);
+  // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
 
 
   // TODO MATAN - Execute Algorithm
