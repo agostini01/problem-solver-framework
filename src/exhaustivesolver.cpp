@@ -18,9 +18,13 @@
  */
 
 #include "exhaustivesolver.h"
+
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <algorithm>
+
+#include "binpackingsolution.h"
 
 #include "util.h" // TODO REMOVE!!!!!
 
@@ -33,26 +37,7 @@ ExhaustiveSolver::ExhaustiveSolver(
 
 }
 
-bool Bin::add_item(int item) {
-  //std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl; 
-  if (curr_size + item <= max_size) {
-    items.insert(items.end(), item);
-    curr_size+= item;
-    return true;
-  } else {
-    return false;
-  }
-}
 
-int Bin::get_size() {
-  return curr_size;
-}
-
-Bin::Bin(int max_weight) {
-  max_size = max_weight;
-  curr_size = 0;
-//  std::cerr << "Making new Bin. Max size: " << max_size << " Current size: " << curr_size << std::endl;
-}
 
 
 std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_problem)
@@ -93,7 +78,7 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
      //std::cerr << "Attempting to place item: " << *it << ' ' << std::endl ;
       for (int i = 0 ; i < list_of_bins.size(); i++) {
         // std::cerr << "Bin #: " << i << " Current bin's size: " << list_of_bins[i].get_size() << std::endl;
-        if (list_of_bins[i].add_item(*it)) {
+        if (list_of_bins[i].AddItem(*it)) {
             added = true;
             break;
             // std::cerr <<  "Item Didn't fit" << std::endl;
@@ -101,11 +86,15 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
       }
       if (!added) {
           Bin new_bin = Bin(bucket_capacity);
-          new_bin.add_item(*it);
+          new_bin.AddItem(*it);
           list_of_bins.push_back(new_bin);
       }
     }
     std::cerr << "Fit in " << list_of_bins.size() << " Bins." << std::endl;
+    for (auto it = list_of_bins.begin(); it!=list_of_bins.end();++it)
+    {
+        (*it).PrintContents();
+    }
 
     std::cerr<<std::endl;
   } while (std::next_permutation(problem_weights.begin(), problem_weights.end()));

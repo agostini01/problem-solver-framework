@@ -21,11 +21,40 @@
 #define BINPACKINGSOLUTION_H
 
 #include "solution.h"
+#include <list>
+#include <vector>
+
+
+class Bin
+{
+private:
+    int m_max_size;
+    int m_curr_size;
+    std::vector<int> m_items;
+
+public:
+    bool AddItem(int item);
+    int GetMaxSize();
+    Bin(int max_weight);
+    void PrintContents() const;
+};
+
+class BestFit
+{
+public:
+    BestFit();
+};
 
 class BinPackingSolution : public Solution
 {
 public:
     BinPackingSolution();
+
+private:
+    std::list<BestFit> m_best_fits;
 };
+
+
+
 
 #endif // BINPACKINGSOLUTION_H

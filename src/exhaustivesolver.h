@@ -42,17 +42,4 @@ private:
   std::vector<std::shared_ptr<Solution>>&m_solutions;
 };
 
-class Bin
-{
-private:
-	int max_size;
-	int curr_size;
-	std::vector<int> items;
-
-public:
-	bool add_item(int item);
-	int get_size();
-	Bin(int max_weight);
-};
-
 #endif // EXHAUSTIVESOLVER_H

@@ -18,6 +18,40 @@
  */
 
 #include "binpackingsolution.h"
+#include <iostream>
+#include <iomanip>
+
+
+void Bin::PrintContents() const
+{
+    std::cerr<<"Bin: ";
+    for (auto it = m_items.begin(); it!=m_items.end();++it)
+    {
+        std::cerr<<std::setw(3)<<*it;
+    }
+    std::cerr<<std::endl;
+}
+
+bool Bin::AddItem(int item) {
+  //std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl;
+  if (m_curr_size + item <= m_max_size) {
+    m_items.insert(m_items.end(), item);
+    m_curr_size+= item;
+    return true;
+  } else {
+    return false;
+  }
+}
+
+int Bin::GetMaxSize() {
+  return m_curr_size;
+}
+
+Bin::Bin(int max_weight) {
+  m_max_size = max_weight;
+  m_curr_size = 0;
+//  std::cerr << "Making new Bin. Max size: " << max_size << " Current size: " << curr_size << std::endl;
+}
 
 BinPackingSolution::BinPackingSolution()
 {
