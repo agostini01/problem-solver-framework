@@ -37,5 +37,7 @@ std::list<unsigned int> GetRandomList(const unsigned int & list_size);
 
 void PermuteList(std::list<unsigned int> input_list);
 
+long long Factorial(const unsigned int& n);
+
 
 #endif // UTIL

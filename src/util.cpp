@@ -80,3 +80,8 @@ void PermuteList(std::list<unsigned int> input_list)
 
     delete[] input_array;
 }
+
+long long Factorial(const unsigned int &n)
+{
+    return (n == 1 || n == 0) ? 1 : Factorial(n - 1) * n;
+}
