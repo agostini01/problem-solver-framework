@@ -24,7 +24,10 @@
 #include <list>
 #include <vector>
 
-
+///
+/// \brief The Bin class is part of the solution for the bin packing problem
+/// It has a size limit and the items inside that bin
+///
 class Bin
 {
 private:
@@ -39,19 +42,73 @@ public:
     void PrintContents() const;
 };
 
+///
+/// \brief The BestFit class contains the bins of a solution
+/// It keeps track what time this solution was found
+///
 class BestFit
 {
 public:
     BestFit();
+    BestFit(const long long& seconds_taken);
+    BestFit(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
+
+private:
+    long long m_seconds_taken;
+    std::vector<Bin> m_bins;
 };
 
+/// Enumerations that holds possible fit types
+enum FitType { best, equal, worse };
+
+///
+/// \brief The BinPackingSolution class has a list of all best solutions
+/// Note that best solutions do not me the optimal.
+/// It also keeps track of the number of possible solutions and how many were attempted
+///
 class BinPackingSolution : public Solution
 {
 public:
     BinPackingSolution();
 
+    long long getSecondsTaken() const;
+    void setSecondsTaken(const long long& seconds_taken);
+
+    bool getFoundOptimal() const;
+    void setFoundOptimal(const bool& found_optimal);
+
+    void IncPermutationsDone();
+
+
+    long long getNumberOfCombinations() const;
+    void setNumberOfCombinations(const long long& number_of_combinations);
+
+    FitType GetFitType(const unsigned int& n_of_bins);
+
+    void Check(const std::vector<Bin>& possible_fit, const unsigned int& n_of_bins,
+               const long long& seconds_taken);
+
+
+
 private:
+
+    /// List of the best combinations attempted so far
     std::list<BestFit> m_best_fits;
+
+    // Best number of bins so far
+    unsigned int m_best_n_of_bins;
+
+    /// Information on how long it took to find the best solutions given
+    long long m_seconds_taken;
+
+    /// Keeps track of the total number of possible combinations attempted
+    long long m_permutations_done;
+
+    /// Variable is set to true when the solver signals that it found the optimal solution
+    bool m_found_optimal;
+
+    long long  m_number_of_combinations;
+
 };
 
 

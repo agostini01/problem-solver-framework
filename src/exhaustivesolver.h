@@ -25,21 +25,31 @@
 #include "solution.h"
 #include <vector>
 #include <memory>
+#include <ctime>
 
 class ExhaustiveSolver : public Solver
 {
 public:
-  ExhaustiveSolver(
-    std::vector<std::shared_ptr<Problem>>& problems,
-    std::vector<std::shared_ptr<Solution>>& solutions);
+    ExhaustiveSolver(
+            std::vector<std::shared_ptr<Problem>>& problems,
+            std::vector<std::shared_ptr<Solution>>& solutions);
 
-  std::shared_ptr<Solution> Solve(std::shared_ptr<Problem> the_problem);
-  void SolveAll();
-  
+    std::shared_ptr<Solution> Solve(std::shared_ptr<Problem> the_problem);
+    void SolveAll();
+
 
 private:
-  std::vector<std::shared_ptr<Problem>> &m_problems;
-  std::vector<std::shared_ptr<Solution>>&m_solutions;
+
+    void StartTimer();
+    long long GetDuration() const;
+    long long StopTimer() const;
+
+    time_t m_start_time;
+    std::vector<std::shared_ptr<Problem>> &m_problems;
+    std::vector<std::shared_ptr<Solution>>&m_solutions;
+
+
+    void PrintProblemWeights(const std::list<unsigned int> &problem_weights);
 };
 
 #endif // EXHAUSTIVESOLVER_H
