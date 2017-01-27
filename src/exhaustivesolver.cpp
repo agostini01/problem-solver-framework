@@ -108,7 +108,7 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
         }
 
         // We have a possible solution here in list_of_bins
-        std::cout << "Took: " << GetDuration()<< std::endl;
+        //std::cout << "Took: " << GetDuration()<< std::endl;
         the_solution->Check(list_of_bins,list_of_bins.size(), GetDuration());
 
         std::cerr << "Fit in " << list_of_bins.size() << " Bins." << std::endl;
@@ -123,7 +123,7 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
         // Wrap up solution
         the_solution->IncPermutationsDone();
 
-        if (GetDuration()>20)
+        if (GetDuration()>60)
         {
             std::cout<< "Run out of time"<<std::endl;
             the_solution->setFoundOptimal(false);
