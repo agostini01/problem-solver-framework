@@ -32,6 +32,17 @@ void Bin::PrintContents() const
     std::cerr<<std::endl;
 }
 
+void Bin::PrintContentsFormated() const
+{
+    std::cout<<"{";
+    for (auto it = m_items.begin(); it!=m_items.end()-1;++it)
+    {
+        std::cout<<*it <<",";
+    }
+    std::cout << *(m_items.end()-1)<<"}";
+}
+
+
 bool Bin::AddItem(int item) {
   //std::cerr << "Current Size: " << curr_size << " Item size: " << item << " Max Size: " << max_size << std::endl;
   if (m_curr_size + item <= m_max_size) {
@@ -56,7 +67,7 @@ Bin::Bin(int max_weight) {
 BinPackingSolution::BinPackingSolution()
     : m_seconds_taken(0)
     , m_permutations_done(0)
-    , m_found_optimal(false)
+    , m_found_optimal(true)
     , m_best_n_of_bins(1000000)
 {
 
@@ -87,7 +98,7 @@ void BinPackingSolution::IncPermutationsDone()
     ++m_permutations_done;
 }
 
-long long BinPackingSolution::getNumberOfCombinations() const
+unsigned long long BinPackingSolution::getNumberOfCombinations() const
 {
     return m_number_of_combinations;
 }
@@ -134,6 +145,57 @@ void BinPackingSolution::Check(const std::vector<Bin> &possible_fit, const unsig
     }
 }
 
+void BinPackingSolution::PrintBestFits()
+{
+    for(auto outer_it = m_best_fits.begin(); outer_it!= m_best_fits.end();++outer_it)
+    {
+        std::cout << "{";
+        std::vector<Bin> sol_bins = outer_it->bins();
+        for (auto it = sol_bins.begin(); it!=sol_bins.end()-1;++it)
+        {
+            it->PrintContentsFormated();
+            std::cout << ",";
+        }
+        (sol_bins.end()-1)->PrintContentsFormated();
+        std::cout << "}\t"<<outer_it->SecondsTaken()<<std::endl;
+    }
+}
+
+long long BinPackingSolution::getPermutationsDone() const
+{
+    return m_permutations_done;
+}
+
+void BinPackingSolution::PrintStatistics()
+{
+    // Total running time
+    std::cout<<"Total running time: "<<getSecondsTaken()<<std::endl;
+    // Permutatins total
+    std::cout<<"Permutatins total: "<<getNumberOfCombinations()<<std::endl;
+    // Permutations Covered
+    std::cout<<"Permutations Covered: "<<getPermutationsDone()<<std::endl;
+    // % of permutations
+    std::cout<<"% of permutations: "<<(float)getPermutationsDone()/(float)getNumberOfCombinations() << std::endl;
+
+    // optimal solutions
+    // solution - time to solutions
+
+    PrintBestFits();
+
+
+//    std::cout<<"{";
+//    for (auto it = m_bins.begin(); it!=m_bins.end()-1;++it)
+//    {
+//        std::cout << "* ";
+//        it->PrintContents();
+//    }
+//    (m_bins.end()-1)->PrintContents();
+
+
+
+//    std::cout<<
+}
+
 BestFit::BestFit()
     : m_seconds_taken(0)
     , m_bins()
@@ -153,4 +215,14 @@ BestFit::BestFit(const std::vector<Bin>& possible_fit, const long long& seconds_
     , m_bins(possible_fit)
 {
 
+}
+
+std::vector<Bin> BestFit::bins() const
+{
+    return m_bins;
+}
+
+long long BestFit::SecondsTaken() const
+{
+    return m_seconds_taken;
 }

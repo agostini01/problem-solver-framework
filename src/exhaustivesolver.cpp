@@ -58,10 +58,10 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
     unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
     unsigned int problem_id = the_problem->GetProblemId();
     std::list<unsigned int> problem_weights =  the_problem->GetWeights();
-
+    problem_weights.sort();
     // Shared solution that will be added to the list of solutions
     std::shared_ptr<BinPackingSolution> the_solution = std::make_shared<BinPackingSolution>();
-
+    the_solution->setNumberOfCombinations(Factorial(problem_weights.size()));
 
     // Just for the sake of sanity: printing Everything
     std::cerr<<std::endl;
@@ -108,42 +108,36 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
         }
 
         // We have a possible solution here in list_of_bins
-
+        std::cout << "Took: " << GetDuration()<< std::endl;
         the_solution->Check(list_of_bins,list_of_bins.size(), GetDuration());
 
         std::cerr << "Fit in " << list_of_bins.size() << " Bins." << std::endl;
-        for (auto it = list_of_bins.begin(); it!=list_of_bins.end();++it)
+        for (auto it = list_of_bins.begin(); it!=list_of_bins.end()-1;++it)
         {
-            (*it).PrintContents();
+            it->PrintContents();
         }
+        (list_of_bins.end()-1)->PrintContents();
         std::cerr<<std::endl;
+
+
+        // Wrap up solution
+        the_solution->IncPermutationsDone();
+
+        if (GetDuration()>20)
+        {
+            std::cout<< "Run out of time"<<std::endl;
+            the_solution->setFoundOptimal(false);
+            break;
+        }
     } while (std::next_permutation(problem_weights.begin(), problem_weights.end()));
     std::cerr<<std::endl;
     std::cerr<<std::endl;
     std::cerr<<"-----------------------------------------------------"<<std::endl;
 
-    // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
-    // PermuteList(problem_weights);
-    // TODO REMOVE!!! EXAMPLE ON HOW TO DO PERMUTATION
+    the_solution->setSecondsTaken(GetDuration());
 
+    the_solution->PrintStatistics();
 
-    // TODO MATAN - Execute Algorithm
-    // TODO MATAN - Implement Timing
-    // TODO MATAN - As we have talked, we should keep track of all the best
-    // To do that, we will have to use nested containers.
-    // I was thinking that the possible solution should be a
-    //    list (or vector) of X optimal lists (or vectors) of K lists (or vectors)
-    //                           - one for each bucket - that contain the weights.
-    // std::list< std::list< std::list< unsigned int > > > optimal_solutions_list
-    // std::list< std::list<unsigned int > >            a_optimal_solution_with_k_buckets
-    // std::list< unsigned int > >                      weights_in_a_bucket
-
-    // ps. In old c we could not have <<<>>> with spaces in between.
-
-    // TODO MATAN - You can change the order of the files in
-    //              root/res/list_of_files.txt, to select a simple instance
-
-    // TODO Solution class is not ready yet. I can implement it later,
     return the_solution;
 }
 
@@ -162,6 +156,12 @@ void ExhaustiveSolver::SolveAll()
     // push back the solution for the problem
     m_solutions.push_back(Solve(*it));
   }
+
+//  for (auto it = m_solutions.begin(); it != m_solutions.end(); ++it)
+//  {
+//    // push back the solution for the problem
+//    it->PrintStatistics();
+//  }
 
 }
 

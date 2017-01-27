@@ -40,6 +40,7 @@ public:
     int GetMaxSize();
     Bin(int max_weight);
     void PrintContents() const;
+    void PrintContentsFormated() const;
 };
 
 ///
@@ -52,6 +53,10 @@ public:
     BestFit();
     BestFit(const long long& seconds_taken);
     BestFit(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
+
+    std::vector<Bin> bins() const;
+
+    long long SecondsTaken() const;
 
 private:
     long long m_seconds_taken;
@@ -79,8 +84,7 @@ public:
 
     void IncPermutationsDone();
 
-
-    long long getNumberOfCombinations() const;
+    unsigned long long getNumberOfCombinations() const;
     void setNumberOfCombinations(const long long& number_of_combinations);
 
     FitType GetFitType(const unsigned int& n_of_bins);
@@ -88,7 +92,13 @@ public:
     void Check(const std::vector<Bin>& possible_fit, const unsigned int& n_of_bins,
                const long long& seconds_taken);
 
+    void PrintStatistics();
 
+
+
+    void PrintBestFits();
+
+    long long getPermutationsDone() const;
 
 private:
 
@@ -107,7 +117,7 @@ private:
     /// Variable is set to true when the solver signals that it found the optimal solution
     bool m_found_optimal;
 
-    long long  m_number_of_combinations;
+    unsigned long long  m_number_of_combinations;
 
 };
 
