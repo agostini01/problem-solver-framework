@@ -1,1 +1,1 @@
-SUBDIRS = gtest
+SUBDIRS = gtest cpp

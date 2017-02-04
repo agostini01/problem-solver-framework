@@ -99,6 +99,7 @@ AM_CONDITIONAL([HAVE_DOXYGEN],
 AC_CONFIG_FILES([Makefile
                  lib/Makefile
                  lib/gtest/Makefile
+                 lib/cpp/Makefile
                  src/Makefile
                  tests/Makefile
                  docs/Makefile
