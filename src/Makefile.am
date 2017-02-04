@@ -19,3 +19,7 @@ main_SOURCES = main.cpp util.cpp util.h \
     fileio.h \
     problemgenerator.cpp \
     problemgenerator.h
+
+
+LDADD = \
+    ../lib/cpp/libcpp.a
