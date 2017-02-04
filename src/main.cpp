@@ -32,7 +32,7 @@
 // Configuration options
 ////////////////////////////////////////////////////////////////////////////////
 
-//bool binary_hex_dump=0;
+bool binary_hex_dump=0;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -86,11 +86,18 @@ void RegisterOptions(){
                           "The following list of command-line options can be used "
                           "for <options>:");
 
+    //
+    // General Problem Solver Options
+    //
+
+    // Set category for following options
+    command_line->setCategory("default", "General Problem Solver Options");
+
     // Help message for memory system
-    //    command_line->RegisterBool("--binary-hex-dump",
-    //                               binary_hex_dump,
-    //                               "Print the binary file in hex format"
-    //                               );
+        command_line->RegisterBool("--binary-hex-dump",
+                                   binary_hex_dump,
+                                   "Print the binary file in hex format"
+                                   );
 }
 
 /// Process command line
@@ -100,6 +107,7 @@ void ProcessOptions(){
 
 /// Main simulation loop
 int MainLoop(){
+
 
 }
 
@@ -116,6 +124,8 @@ int MainProgram(int argc, char **argv){
 
     // Read command line
     RegisterOptions();
+    misc::CommandLine *command_line = misc::CommandLine::getInstance();
+    command_line->Process(argc, argv, false);
 
     // Process command line
     ProcessOptions();
@@ -138,8 +148,8 @@ int main(int argc, char **argv) {
     try {
         // Run main program
         return MainProgram(argc, argv);
-    } catch (std::exception &e) {
-        std::cerr << e.what();
+    } catch (misc::Exception &e) {
+        e.Dump();
         return 1;
     }
 }
