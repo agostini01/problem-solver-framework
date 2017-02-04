@@ -8,8 +8,8 @@ AM_INIT_AUTOMAKE([foreign subdir-objects])
 LT_INIT
 
 # Checks for programs.
-AC_PROG_CC
-AC_PROG_CXX
+AC_PROG_CC([clang])
+AC_PROG_CXX([clang])
 AC_LANG([C],[C++])
 
 # Check for C++11
