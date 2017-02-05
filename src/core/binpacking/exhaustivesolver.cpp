@@ -26,7 +26,7 @@
 
 #include "binpackingsolution.h"
 
-#include "util.h" // factorial()
+#include "../../util/util.h" // factorial()
 
 ExhaustiveSolver::ExhaustiveSolver(
   std::vector<std::shared_ptr<Problem>>& problems,

@@ -17,39 +17,15 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#ifndef EXHAUSTIVESOLVER_H
-#define EXHAUSTIVESOLVER_H
+#ifndef BINPACKINGPROBLEM_H
+#define BINPACKINGPROBLEM_H
 
-#include "solver.h"
-#include "problem.h"
-#include "solution.h"
-#include <vector>
-#include <memory>
-#include <ctime>
+#include "../problem.h"
 
-class ExhaustiveSolver : public Solver
+class BinPackingProblem : public Problem
 {
 public:
-    ExhaustiveSolver(
-            std::vector<std::shared_ptr<Problem>>& problems,
-            std::vector<std::shared_ptr<Solution>>& solutions);
-
-    std::shared_ptr<Solution> Solve(std::shared_ptr<Problem> the_problem);
-    void SolveAll();
-
-
-private:
-
-    void StartTimer();
-    long long GetDuration() const;
-    long long StopTimer() const;
-
-    time_t m_start_time;
-    std::vector<std::shared_ptr<Problem>> &m_problems;
-    std::vector<std::shared_ptr<Solution>>&m_solutions;
-
-
-    void PrintProblemWeights(const std::list<unsigned int> &problem_weights);
+    BinPackingProblem();
 };
 
-#endif // EXHAUSTIVESOLVER_H
+#endif // BINPACKINGPROBLEM_H

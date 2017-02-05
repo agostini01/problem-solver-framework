@@ -23,12 +23,12 @@
 #include <memory>
 #include <vector>
 
-#include "problemgenerator.h"
-#include "problem.h"
-#include "solution.h"
-#include "util.h"
-#include "fileio.h"
-#include "exhaustivesolver.h"
+#include "core/problemgenerator.h"
+#include "core/problem.h"
+#include "core/solution.h"
+#include "util/util.h"
+#include "util/fileio.h"
+#include "core/binpacking/exhaustivesolver.h"
 
 
 

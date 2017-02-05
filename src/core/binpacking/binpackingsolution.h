@@ -20,7 +20,7 @@
 #ifndef BINPACKINGSOLUTION_H
 #define BINPACKINGSOLUTION_H
 
-#include "solution.h"
+#include "../solution.h"
 #include <list>
 #include <vector>
 

@@ -19,8 +19,8 @@
 
 #include "problemgenerator.h"
 
-#include "util.h"
-#include "fileio.h"
+#include "../util/util.h"
+#include "../util/fileio.h"
 #include <iostream>
 
 ProblemGenerator::ProblemGenerator(
