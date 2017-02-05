@@ -10,8 +10,8 @@ main_SOURCES = main.cpp
 
 LDADD = \
     ../lib/cpp/libcpp.a \
-	\
-	./util/libprogramutil.a \
+    \
 	\
     ./core/binpacking/libbinpacking.a \
-	./core/libprogramcore.a 
+    ./core/libprogramcore.a \
+    ./util/libprogramutil.a

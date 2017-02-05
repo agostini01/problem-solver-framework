@@ -47,7 +47,12 @@
 // Configuration options
 ////////////////////////////////////////////////////////////////////////////////
 
-bool binary_hex_dump=0;
+/// File path to a file with the path of the problems
+std::string input_list_of_problems;
+
+/// Maximum time for which the solver will run on, in seconds
+/// default = 60s
+long long max_solving_time = 60;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -112,35 +117,46 @@ void RegisterOptions(){
     // Set category for following options
     command_line->setCategory("default", "General Problem Solver Options");
 
-    // Help message for memory system
-        command_line->RegisterBool("--binary-hex-dump",
-                                   binary_hex_dump,
-                                   "Print the binary file in hex format"
-                                   );
+    // Input file for the data
+    command_line->RegisterString("--from-files <file>",
+                                 input_list_of_problems,
+                                 "Input file with path to problems. Path should be referenced"
+                                 "from where the binary is executed.");
+
+    // Maximum simulation time
+    command_line->RegisterInt64("--max-solving-time <time> (default = 60)",
+                                max_solving_time,
+                                "Maximum simulation time in seconds. The simulator "
+                                "will stop once this time is exceeded.");
 }
 
 /// Process command line
 void ProcessOptions(){
+
+    if (!input_list_of_problems.empty()){
+        // Do nothing for now
+        // Maybe set path into the file handler instead of this file
+    }
 
 }
 
 /// Main simulation loop
 int MainLoop(){
 
-  FileIO file_io;
+    FileIO file_io;
 
-  ProblemGenerator problem_generator(g_my_problems);
-  problem_generator.GetProblemsFromListOfFiles("../res/list_of_files.txt");
+    ProblemGenerator problem_generator(g_my_problems);
+    problem_generator.GetProblemsFromListOfFiles("../res/list_of_files.txt");
 
-  std::cerr<<"Number of instances: "<< g_my_problems.size()<<std::endl;
-  for (auto it = g_my_problems.begin(); it != g_my_problems.end(); ++it)
-  {
-    std::cerr<<(*it)->ToString()<<std::endl<<std::endl<<std::endl;
-  }
+    std::cerr<<"Number of instances: "<< g_my_problems.size()<<std::endl;
+    for (auto it = g_my_problems.begin(); it != g_my_problems.end(); ++it)
+    {
+        std::cerr<<(*it)->ToString()<<std::endl<<std::endl<<std::endl;
+    }
 
-  ExhaustiveSolver problem_solver(g_my_problems, g_my_solutions);
-  //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
-  problem_solver.SolveAll();
+    ExhaustiveSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+    //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+    problem_solver.SolveAll();
 
 }
 

@@ -32,7 +32,9 @@ class ExhaustiveSolver : public Solver
 public:
     ExhaustiveSolver(
             std::vector<std::shared_ptr<Problem>>& problems,
-            std::vector<std::shared_ptr<Solution>>& solutions);
+            std::vector<std::shared_ptr<Solution>>& solutions,
+            long long & max_solver_time
+            );
 
     std::shared_ptr<Solution> Solve(std::shared_ptr<Problem> the_problem);
     void SolveAll();
@@ -47,6 +49,8 @@ private:
     time_t m_start_time;
     std::vector<std::shared_ptr<Problem>> &m_problems;
     std::vector<std::shared_ptr<Solution>>&m_solutions;
+
+    long long m_max_sim_time;
 
 
     void PrintProblemWeights(const std::list<unsigned int> &problem_weights);

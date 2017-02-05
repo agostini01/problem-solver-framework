@@ -28,12 +28,12 @@
 
 #include "../../util/util.h" // factorial()
 
-ExhaustiveSolver::ExhaustiveSolver(
-  std::vector<std::shared_ptr<Problem>>& problems,
-  std::vector<std::shared_ptr<Solution>>& solutions)
+ExhaustiveSolver::ExhaustiveSolver(std::vector<std::shared_ptr<Problem>>& problems,
+  std::vector<std::shared_ptr<Solution>>& solutions, long long &max_solver_time)
   : m_problems(problems)
   , m_solutions(solutions)
   , m_start_time(0)
+  , m_max_sim_time(max_solver_time)
 {
 
 }
@@ -123,7 +123,7 @@ std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_p
         // Wrap up solution
         the_solution->IncPermutationsDone();
 
-        if (GetDuration()>60)
+        if (GetDuration()>m_max_sim_time)
         {
             std::cout<< "Run out of time"<<std::endl;
             the_solution->setFoundOptimal(false);
