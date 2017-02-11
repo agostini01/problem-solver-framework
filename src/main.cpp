@@ -158,6 +158,8 @@ int MainLoop(){
     //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
     problem_solver.SolveAll();
 
+    return 0;
+
 }
 
 /// Dump statistics

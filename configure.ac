@@ -7,9 +7,13 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 LT_INIT
 
+# Silent rules if supported
+ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+
 # Checks for programs.
-AC_PROG_CC
-AC_PROG_CXX
+AC_PROG_CC([clang gcc cc])
+AC_PROG_CXX([clang++ g++ c++])
+AC_PROG_OBJC([clang gcc cc])
 AC_LANG([C],[C++])
 
 # Check for C++11
