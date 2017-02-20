@@ -58,7 +58,7 @@ std::shared_ptr<Solution> FirstFitSolver::Solve(std::shared_ptr<Problem> the_pro
 	unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
 	unsigned int problem_id = the_problem->GetProblemId();
 	std::list<unsigned int> problem_weights =  the_problem->GetWeights();
-	problem_weights.sort();
+
 	// Shared solution that will be added to the list of solutions
 	std::shared_ptr<BinPackingSolution> the_solution = std::make_shared<BinPackingSolution>();
 	the_solution->setNumberOfCombinations(1); // Greedy runs only once
@@ -77,6 +77,8 @@ std::shared_ptr<Solution> FirstFitSolver::Solve(std::shared_ptr<Problem> the_pro
 
 	// Start timing the solution
 	StartTimer();
+	problem_weights.sort();
+	problem_weights.reverse(); // Reverse sort those weights
 	do { // This body will execute once for each permutation
 
 		// Create the variables to store a solution
