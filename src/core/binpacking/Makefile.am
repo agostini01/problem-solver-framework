@@ -9,6 +9,9 @@ libbinpacking_a_SOURCES = \
     binpackingsolution.h \
 	\
 	exhaustivesolver.cpp \
-    exhaustivesolver.h
+    exhaustivesolver.h	\
+	\
+	firstfitsolver.cpp \
+	firstfitsolver.h
 
 AM_CXXFLAGS = $(WARN_CXXFLAGS)

@@ -29,6 +29,7 @@
 #include "util/util.h"
 #include "util/fileio.h"
 #include "core/binpacking/exhaustivesolver.h"
+#include "core/binpacking/firstfitsolver.h"
 
 
 
@@ -53,6 +54,13 @@ std::string input_list_of_problems;
 /// Maximum time for which the solver will run on, in seconds
 /// default = 60s
 long long max_solving_time = 60;
+
+// Bellow are booleans to select the solver
+/// Exhaustive solver
+bool exhaustive_solver = false;
+bool firstfit_solver = false;
+bool bestfit_solver = false;
+bool worstfit_solver = false;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -128,6 +136,21 @@ void RegisterOptions(){
                                 max_solving_time,
                                 "Maximum simulation time in seconds. The simulator "
                                 "will stop once this time is exceeded.");
+
+    // Solver types
+    command_line->setCategory("solvers", "Solver types options");
+    command_line->RegisterBool("--exhaustive",
+            exhaustive_solver,
+            "Runs the solver as a exhaustive solver, where all the, "
+            "possible combinations will be tried using a first fit "
+            "approach.");
+    command_line->RegisterBool("--firstfit",
+            firstfit_solver,
+            "Runs the solver as a first fit solver, where the solver, "
+            "will attempt to always put the next item on the first availabe "
+            "bin, creating a new one if it is not possible. It sorts the "
+            "dataset.");
+
 }
 
 /// Process command line
@@ -154,9 +177,19 @@ int MainLoop(){
         std::cerr<<(*it)->ToString()<<std::endl<<std::endl<<std::endl;
     }
 
-    ExhaustiveSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
-    //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
-    problem_solver.SolveAll();
+    if(exhaustive_solver)
+    {
+        ExhaustiveSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+        //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+        problem_solver.SolveAll();
+    }
+
+    if(firstfit_solver)
+    {
+        FirstFitSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+        //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+        problem_solver.SolveAll();
+    }
 
     return 0;
 
