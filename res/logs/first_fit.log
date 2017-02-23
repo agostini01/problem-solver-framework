@@ -1,0 +1,588 @@
+=====================================================
+=================Starting Solution==================
+Problem id: 0
+Max Size of Bucket: 100000
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 59
+{{34955,34773,30246},{34641,34529,30751},{34478,34453,31064},{34441,34399,31008},{34131,34102,31766},{33996,33978,31717},{33732,33523,32681},{33445,33437,33108},{33428,33386,33183},{33338,33140,33076},{33005,32986,32984},{32859,32819,32749},{32620,32582,32504},{32425,32417,31699},{31648,31566,31505},{31373,31355,31273},{31264,31216,30918},{30905,30724,30707},{30689,30617,30592},{30519,30459,30315},{30297,30279,30246},{30148,30138,30069},{29962,29899,29898},{29737,29735,29626},{29590,29495,29434},{29159,29063,28917},{28862,28709,28678},{28524,28426,28296},{28231,28213,28210},{28198,27960,27628},{27622,27502,27473},{27345,27330,27323},{27301,27240,27120},{27090,27015,26845},{26839,26828,26636},{26607,26570,26554,20000},{26311,26308,26270,21048},{26225,26219,26211,21345},{26088,26067,26060,21712},{25994,25942,25920,22131},{25916,25866,25827,22345},{25735,25600,25561,23012},{25504,25443,25437,23572},{25380,25097,25077,24361},{25071,25054,25037,24788},{24941,24933,24871,24843},{24751,24720,24594,24565},{24312,24168,24153,24152},{24145,24109,24088,23852},{23829,23766,23654,23630},{23482,23379,23172,22937},{22936,22897,22887,22886},{22876,22689,22673,22670},{22542,22262,22199,22109},{22095,21958,21642,21440},{21296,21156,21147,21122},{21036,21031,21021,20960},{20812,20646,20500,20443},{20409,20385,20382}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 1
+Max Size of Bucket: 100
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 25
+{{99},{99},{96,3},{96},{92,7},{92,7},{91},{88,11},{87,13},{86,14},{85,10},{76,24},{74,25},{72,28},{69,30},{67,33},{67,33},{62,30},{61,29},{56,44},{52,46},{51,49},{42,40,17},{40,28,27},{23,22,21,20}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 2
+Max Size of Bucket: 120
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 21
+{{100,18,2},{97,16,7},{96,24},{92,28},{89,31},{88,32},{88,30},{87,27,5},{83,37},{75,40,4},{75,40},{72,47},{71,46},{70,50},{69,36,14},{66,27,26},{63,13,12,10,10,10},{62,58},{62,8},{61},{60}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 3
+Max Size of Bucket: 1000
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 12
+{{132,132,132,132,132,130,130},{130,130,130,129,129,128,128,96},{128,128,128,127,126,126,125,112},{125,125,125,124,123,123,123,122},{122,122,122,121,121,121,121,120},{120,119,118,118,117,116,115,115},{115,114,114,114,114,113,113,113,90},{113,112,112,111,111,110,110,109,109},{108,108,107,107,107,107,106,105,103},{103,103,102,102,101,101,99,98,98,93},{98,98,96,96,95,95,95,94,94,93},{92,91,91,91,91,90}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 4
+Max Size of Bucket: 100000
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 59
+{{34808,34689,30462},{34603,34583,30793},{34336,34297,31312},{34244,34192,31095},{34092,34045,31788},{34030,33976,31894},{33959,33872,32094},{33820,33736,32256},{33641,33592,32733},{33405,33362,33223},{33333,33299,33253},{33242,33120,33093},{33067,32193,32003},{31746,31734,31720},{31675,31651,31648},{31618,31611,31599},{31598,31062,30853},{30691,30599,30567},{30537,30436,30264},{30246,30218,30053},{30037,29942,29941},{29879,29779,29746},{29688,29682,29641},{29633,29563,29462},{29461,29450,29356},{29299,29288,29280},{29235,29169,29129},{28955,28954,28671},{28437,28336,28269},{28200,28000,27973},{27968,27914,27885},{27759,27741,27653},{27567,27563,26904},{26550,26402,26366,20584},{26361,26348,26225,21027},{26139,26108,25991,21594},{25718,25683,25639,22959},{25462,25290,25228,23974},{25136,25043,25038,24768},{24962,24892,24823,24803},{24621,24559,24441,24419},{24381,24250,24235,24093},{24083,24065,24060,23868},{23833,23636,23633,23581},{23523,23445,23413,23317},{23202,23160,23150,23117},{22977,22955,22947,22915},{22833,22755,22739,22603},{22592,22557,22554,22530},{22354,22313,22306,22095},{22092,22021,21948,21934},{21913,21855,21564,21543},{21518,21440,21389,21370},{21205,21174,20984,20969},{20932,20900,20844,20816},{20721,20694,20533,20490},{20476,20343,20332,20260},{20173,20162,20157,20131},{20017}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 5
+Max Size of Bucket: 100
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 106
+{{100},{99,1},{99,1},{98,2},{98},{97,3},{97},{97},{97},{97},{96,4},{96},{96},{96},{95,5},{95,5},{94,6},{92,7},{92,6},{92},{92},{91,9},{91},{91},{90,10},{90,10},{90,10},{89,11},{87,13},{87,12},{86,14},{85,15},{85,15},{83,17},{83,17},{83,17},{82,18},{82,18},{80,20},{78,21},{78,21},{78,19},{77,23},{77,23},{77,23},{77,23},{76,24},{76,23},{75,25},{75,25},{74,26},{74,26},{74,25},{74,19},{72,28},{71,29},{71,29},{71,29},{70,30},{70,30},{69,31},{69,28},{69,27},{68,32},{67,33},{67,27},{67,19,14},{67,18,15},{66,17,16},{66,16,16},{66,15,15},{66,12,11,10},{65,35},{65,35},{65,35},{65,10},{64},{63,37},{61,39},{61,38},{60,40},{60,37},{60},{59,41},{59,41},{58,42},{58,42},{58,42},{57,43},{55,45},{54,46},{54,46},{54,44},{54,44},{54,44},{54,44},{54,44},{54,41},{52,47},{52,47},{52,41},{52},{51,49},{51},{51},{51}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 6
+Max Size of Bucket: 120
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 7
+{{96,14,2},{92,26},{86,25},{80,39},{72,42},{63,56},{49,11}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 7
+Max Size of Bucket: 100
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 6
+{{69,28,3},{63,35},{56,41},{55,45},{50,25,19},{14,11,7}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 8
+Max Size of Bucket: 20
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 8
+{{15,5},{15,5},{14,4,2},{14,3,2},{13,2},{12},{11},{10}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 9
+Max Size of Bucket: 20
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 6
+{{10,10},{10,9},{8,8},{7,7,6},{7,6,6},{5,5,5}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 10
+Max Size of Bucket: 20
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 8
+{{10,10},{10,10},{9,9},{9,8},{8,8},{8,7},{7,7},{7}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 11
+Max Size of Bucket: 20
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 7
+{{14,6},{13,6},{12,5,3},{12,4,4},{12,3},{11},{10,10}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 12
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{10,2},{8,4},{8,3},{7,5},{2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 13
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{9,3},{8,4},{7,4},{6,6},{3,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 14
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{9,3},{9,3},{8,4},{8,4},{8,3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 15
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 6
+{{10,2},{10},{9,3},{9,3},{8,4},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 16
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{10,2},{10,2},{9,3},{9,3},{7,4}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 17
+Max Size of Bucket: 12
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{10,2},{10,2},{8,4},{7,4},{7,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 18
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{4,4,2},{4,4,2},{4,3,3},{2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 19
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{4,4,2},{4,3,3},{3,3,3},{2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 20
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{5,5},{4,4,2},{4,4,2},{3,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 21
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{5,5},{5,5},{5,5},{4,3,3},{2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 22
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{8,2},{8,2},{4,3,3},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 23
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{8,2},{7,3},{5,3,2},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 24
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{8},{8},{6,3},{5,5},{5,3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 25
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{8,2},{7,3},{7},{7},{4,4}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 26
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 5
+{{8,2},{7,2},{7},{6,4},{4}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 27
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{8,2},{7,3},{6,3},{6,3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 28
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{5,5},{3,3,3},{3,2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 29
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{5,5},{4,4,2},{3,2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 30
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 4
+{{5,5},{4,4},{3,3,3},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 31
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{5,5},{4,3,3},{2,2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 32
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 2
+{{8,2},{5,3,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 33
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{7,2},{6,4},{4}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 34
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{8,2},{6,4},{6}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 35
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{7,3},{6,3},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 36
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{8,2},{7,3},{4}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 37
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{9,1},{6,3},{3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 38
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 2
+{{5,4},{4,3,3}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 39
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 2
+{{4,3,2},{2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 40
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 2
+{{5,4},{2,2,2}}	0
+=====================================================
+=================Starting Solution==================
+Problem id: 41
+Max Size of Bucket: 10
+Target number of buckets: 0
+
+
+-----------------------------------------------------
+Total running time: 0
+Permutatins total: 1
+Permutations Covered: 1
+Ratio of permutations: 1
+Best number of buckets: 3
+{{5,5},{5,4},{2}}	0
