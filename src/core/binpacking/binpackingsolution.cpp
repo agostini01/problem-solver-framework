@@ -168,6 +168,13 @@ long long BinPackingSolution::getPermutationsDone() const
 
 void BinPackingSolution::PrintStatistics()
 {
+    /*unsigned int problem_id = the_problem->GetProblemId(); 
+    unsigned int bucket_capacity =  the_problem->GetMaxSizeOfBucket();
+    unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
+
+    std::cout<< "Problem id: " << problem_id<<'\n';
+    std::cout<< "Max Size of Bucket: " << bucket_capacity<<'\n';
+    std::cout<< "Target number of buckets: " << max_number_of_buckets<<'\n';*/
     // Total running time
     std::cout<<"Total running time: "<<getSecondsTaken()<<std::endl;
     // Permutatins total

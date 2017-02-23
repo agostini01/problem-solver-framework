@@ -67,11 +67,11 @@ std::shared_ptr<Solution> FirstFitSolver::Solve(std::shared_ptr<Problem> the_pro
 	std::cerr<<std::endl;
 	std::cerr<<std::endl;
 	std::cerr<<std::endl;
-	std::cerr<<"====================================================="<<std::endl;
-	std::cerr<<"=================Starting Solution=================="<<std::endl;
-	std::cerr<< "Problem id: " << problem_id<<'\n';
-	std::cerr<< "Max Size of Bucket: " << bucket_capacity<<'\n';
-	std::cerr<< "Target number of buckets: " << max_number_of_buckets<<'\n';
+	std::cout<<"====================================================="<<std::endl;
+	std::cout<<"=================Starting Solution=================="<<std::endl;
+	std::cout<< "Problem id: " << problem_id<<'\n';
+	std::cout<< "Max Size of Bucket: " << bucket_capacity<<'\n';
+	std::cout<< "Target number of buckets: " << max_number_of_buckets<<'\n';
 
 	std::cerr<< "Item weights: \n";
 
@@ -132,9 +132,9 @@ std::shared_ptr<Solution> FirstFitSolver::Solve(std::shared_ptr<Problem> the_pro
 			break;
 		}
 	} while (std::next_permutation(problem_weights.begin(), problem_weights.begin()));
-	std::cerr<<std::endl;
-	std::cerr<<std::endl;
-	std::cerr<<"-----------------------------------------------------"<<std::endl;
+	std::cout<<std::endl;
+	std::cout<<std::endl;
+	std::cout<<"-----------------------------------------------------"<<std::endl;
 
 	the_solution->setSecondsTaken(GetDuration());
 
