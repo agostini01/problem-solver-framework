@@ -100,6 +100,8 @@ public:
 
     long long getPermutationsDone() const;
 
+    unsigned int getBestNofBins() const;
+
 private:
 
     /// List of the best combinations attempted so far

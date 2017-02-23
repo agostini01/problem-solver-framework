@@ -166,9 +166,14 @@ long long BinPackingSolution::getPermutationsDone() const
     return m_permutations_done;
 }
 
+unsigned int BinPackingSolution::getBestNofBins() const
+{
+    return m_best_n_of_bins;
+}
+
 void BinPackingSolution::PrintStatistics()
 {
-    /*unsigned int problem_id = the_problem->GetProblemId(); 
+    /*unsigned int problem_id = the_problem->GetProblemId();
     unsigned int bucket_capacity =  the_problem->GetMaxSizeOfBucket();
     unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
 
@@ -182,7 +187,9 @@ void BinPackingSolution::PrintStatistics()
     // Permutations Covered
     std::cout<<"Permutations Covered: "<<getPermutationsDone()<<std::endl;
     // % of permutations
-    std::cout<<"% of permutations: "<<(float)getPermutationsDone()/(float)getNumberOfCombinations() << std::endl;
+    std::cout<<"Ratio of permutations: "<<(float)getPermutationsDone()/(float)getNumberOfCombinations() << std::endl;
+    // best number of buckets
+    std::cout<<"Best number of buckets: "<< getBestNofBins() << std::endl;
 
     // optimal solutions
     // solution - time to solutions
