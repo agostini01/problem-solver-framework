@@ -1,0 +1,6 @@
+../res/ours/15_uniform_01.txt
+../res/ours/15_uniform_02.txt
+../res/ours/15_uniform_03.txt
+../res/ours/15_big_01.txt
+../res/ours/15_big_02.txt
+../res/ours/15_big_and_small_01.txt

@@ -1,0 +1,10 @@
+../res/ours/8_uniform_01.txt
+../res/ours/8_uniform_02.txt
+../res/ours/8_uniform_03.txt
+../res/ours/8_big_and_small_01.txt
+../res/ours/8_big_and_small_02.txt
+../res/ours/8_big_and_small_03.txt
+../res/ours/8_small_01.txt
+../res/ours/8_small_02.txt
+../res/ours/8_small_03.txt
+../res/ours/8_small_04.txt
