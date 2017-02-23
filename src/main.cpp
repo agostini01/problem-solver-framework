@@ -169,7 +169,7 @@ int MainLoop(){
     FileIO file_io;
 
     ProblemGenerator problem_generator(g_my_problems);
-    problem_generator.GetProblemsFromListOfFiles("../res/list_of_files.txt");
+    problem_generator.GetProblemsFromListOfFiles(input_list_of_problems);
 
     std::cerr<<"Number of instances: "<< g_my_problems.size()<<std::endl;
     for (auto it = g_my_problems.begin(); it != g_my_problems.end(); ++it)
