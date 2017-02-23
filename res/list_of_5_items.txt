@@ -7,4 +7,4 @@
 ../res/ours/5_small_01.txt
 ../res/ours/5_small_02.txt
 ../res/ours/5_small_03.txt
-../res/ours/5_small_04
+../res/ours/5_small_04.txt
