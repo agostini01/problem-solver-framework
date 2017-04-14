@@ -35,6 +35,8 @@ private:
     int m_curr_size;
     std::vector<int> m_items;
 
+    std::vector<int> problem_weights;
+
 public:
     bool AddItem(int item);
     int GetCurSize();
@@ -42,6 +44,9 @@ public:
     Bin(int max_weight);
     void PrintContents() const;
     void PrintContentsFormated() const;
+
+    //void CalculateOrderedItem
+
 };
 
 ///

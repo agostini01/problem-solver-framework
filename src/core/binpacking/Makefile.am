@@ -12,6 +12,9 @@ libbinpacking_a_SOURCES = \
     exhaustivesolver.h	\
 	\
 	firstfitsolver.cpp \
-	firstfitsolver.h
+	firstfitsolver.h \
+	#\
+	#steepestdescentsolver.cpp \
+	#steepestdescentsolver.h
 
 AM_CXXFLAGS = $(WARN_CXXFLAGS)

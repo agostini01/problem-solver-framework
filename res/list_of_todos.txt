@@ -1,0 +1,3 @@
+../res/scholl/HARD1.txt
+../res/scholl/HARD2.txt
+../res/scholl/HARD3.txt
