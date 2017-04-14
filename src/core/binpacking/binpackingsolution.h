@@ -37,6 +37,7 @@ private:
 
 public:
     bool AddItem(int item);
+    int GetCurSize();
     int GetMaxSize();
     Bin(int max_weight);
     void PrintContents() const;
@@ -57,6 +58,7 @@ public:
     std::vector<Bin> bins() const;
 
     long long SecondsTaken() const;
+    float CalculateFitness();
 
 private:
     long long m_seconds_taken;

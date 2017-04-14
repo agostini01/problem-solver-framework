@@ -20,6 +20,7 @@
 #include "binpackingsolution.h"
 #include <iostream>
 #include <iomanip>
+#include <cmath> // functions pow()
 
 
 void Bin::PrintContents() const
@@ -54,8 +55,13 @@ bool Bin::AddItem(int item) {
   }
 }
 
-int Bin::GetMaxSize() {
-  return m_curr_size;
+int Bin::GetCurSize() {
+    return m_curr_size;
+}
+
+int Bin::GetMaxSize()
+{
+    return m_max_size;
 }
 
 Bin::Bin(int max_weight) {
@@ -132,6 +138,7 @@ void BinPackingSolution::Check(const std::vector<Bin> &possible_fit, const unsig
         m_best_n_of_bins = n_of_bins;
         // add the new one
         m_best_fits.push_back(BestFit(possible_fit,seconds_taken));
+        m_best_fits.begin()->CalculateFitness();
         break;
     case equal:
         // add to the fits
@@ -207,7 +214,7 @@ void BinPackingSolution::PrintStatistics()
 
 
 
-//    std::cout<<
+    //    std::cout<<
 }
 
 BestFit::BestFit()
@@ -239,4 +246,28 @@ std::vector<Bin> BestFit::bins() const
 long long BestFit::SecondsTaken() const
 {
     return m_seconds_taken;
+}
+
+float BestFit::CalculateFitness()
+{
+    float fitness=0;
+    int ocupancy;
+    int capacity;
+    int n_of_bins = m_bins.size();
+    int k = 2;
+    std::vector<Bin>::iterator bins_it;
+    for (bins_it = m_bins.begin();bins_it != m_bins.end();++bins_it)
+    {
+        // inside each bin
+        capacity = bins_it->GetMaxSize();
+        ocupancy = bins_it->GetCurSize();;
+        fitness= fitness + pow(((float)ocupancy/(float)capacity),k);
+
+    }
+    fitness = fitness/n_of_bins;
+
+    std::cout<< "n_of_bins: "<< n_of_bins<<std::endl;
+    std::cout<< "Currently the fitness is: "<< fitness <<std::endl;
+
+    return fitness;
 }
