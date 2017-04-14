@@ -17,9 +17,14 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "solution.h"
+#ifndef SOLUTIONCONTAINER_H
+#define SOLUTIONCONTAINER_H
 
-Solution::Solution()
+
+class SolutionContainer
 {
+public:
+    SolutionContainer();
+};
 
-}
+#endif // SOLUTIONCONTAINER_H

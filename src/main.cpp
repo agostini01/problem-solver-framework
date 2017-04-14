@@ -25,7 +25,7 @@
 
 #include "core/problemgenerator.h"
 #include "core/problem.h"
-#include "core/solution.h"
+#include "core/solutioncontainer.h"
 #include "util/util.h"
 #include "util/fileio.h"
 #include "core/binpacking/exhaustivesolver.h"
@@ -70,7 +70,7 @@ bool worstfit_solver = false;
 std::vector<std::shared_ptr<Problem>> g_my_problems;
 
 /// Container to hold instances of solutions
-std::vector<std::shared_ptr<Solution>> g_my_solutions;
+std::vector<std::shared_ptr<SolutionContainer>> g_my_solutions;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Function declarations

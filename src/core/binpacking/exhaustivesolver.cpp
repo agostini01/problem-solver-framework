@@ -29,7 +29,7 @@
 #include "../../util/util.h" // factorial()
 
 ExhaustiveSolver::ExhaustiveSolver(std::vector<std::shared_ptr<Problem>>& problems,
-  std::vector<std::shared_ptr<Solution>>& solutions, long long &max_solver_time)
+  std::vector<std::shared_ptr<SolutionContainer>>& solutions, long long &max_solver_time)
   : m_problems(problems)
   , m_solutions(solutions)
   , m_start_time(0)
@@ -49,7 +49,7 @@ void ExhaustiveSolver::PrintProblemWeights(
     std::cerr << std::endl;
 }
 
-std::shared_ptr<Solution> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_problem)
+std::shared_ptr<SolutionContainer> ExhaustiveSolver::Solve(std::shared_ptr<Problem> the_problem)
 {
 
     // Variables used to create a solution

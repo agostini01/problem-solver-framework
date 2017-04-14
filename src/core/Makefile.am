@@ -5,8 +5,8 @@ lib_LIBRARIES = libprogramcore.a
 
 libprogramcore_a_SOURCES = \
 	\
-	solution.cpp \
-    solution.h \
+	solutioncontainer.cpp \
+    solutioncontainer.h \
 	\
 	problem.cpp \
     problem.h \

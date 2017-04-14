@@ -1,0 +1,2 @@
+../res/ours/HARD5.txt
+../res/ours/HARD7.txt

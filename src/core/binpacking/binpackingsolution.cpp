@@ -137,14 +137,14 @@ void BinPackingSolution::Check(const std::vector<Bin> &possible_fit, const unsig
         // update the fit
         m_best_n_of_bins = n_of_bins;
         // add the new one
-        m_best_fits.push_back(BestFit(possible_fit,seconds_taken));
+        m_best_fits.push_back(Solution(possible_fit,seconds_taken));
         m_best_fits.begin()->CalculateFitness();
         break;
     case equal:
         // add to the fits
         // check if there are too many fits already
         if(m_best_fits.size()<10)
-            m_best_fits.push_back(BestFit(possible_fit,seconds_taken));
+            m_best_fits.push_back(Solution(possible_fit,seconds_taken));
         break;
     case worse:
         // ignore the fit
@@ -217,38 +217,38 @@ void BinPackingSolution::PrintStatistics()
     //    std::cout<<
 }
 
-BestFit::BestFit()
+Solution::Solution()
     : m_seconds_taken(0)
     , m_bins()
 {
 
 }
 
-BestFit::BestFit(const long long& seconds_taken)
+Solution::Solution(const long long& seconds_taken)
     : m_seconds_taken(seconds_taken)
     , m_bins(std::vector<Bin>())
 {
 
 }
 
-BestFit::BestFit(const std::vector<Bin>& possible_fit, const long long& seconds_taken)
+Solution::Solution(const std::vector<Bin>& possible_fit, const long long& seconds_taken)
     : m_seconds_taken(seconds_taken)
     , m_bins(possible_fit)
 {
 
 }
 
-std::vector<Bin> BestFit::bins() const
+std::vector<Bin> Solution::bins() const
 {
     return m_bins;
 }
 
-long long BestFit::SecondsTaken() const
+long long Solution::SecondsTaken() const
 {
     return m_seconds_taken;
 }
 
-float BestFit::CalculateFitness()
+float Solution::CalculateFitness()
 {
     float fitness=0;
     int ocupancy;

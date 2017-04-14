@@ -20,7 +20,7 @@
 #ifndef BINPACKINGSOLUTION_H
 #define BINPACKINGSOLUTION_H
 
-#include "../solution.h"
+#include "../solutioncontainer.h"
 #include <list>
 #include <vector>
 
@@ -48,12 +48,12 @@ public:
 /// \brief The BestFit class contains the bins of a solution
 /// It keeps track what time this solution was found
 ///
-class BestFit
+class Solution
 {
 public:
-    BestFit();
-    BestFit(const long long& seconds_taken);
-    BestFit(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
+    Solution();
+    Solution(const long long& seconds_taken);
+    Solution(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
 
     std::vector<Bin> bins() const;
 
@@ -73,7 +73,7 @@ enum FitType { best, equal, worse };
 /// Note that best solutions do not me the optimal.
 /// It also keeps track of the number of possible solutions and how many were attempted
 ///
-class BinPackingSolution : public Solution
+class BinPackingSolution : public SolutionContainer
 {
 public:
     BinPackingSolution();
@@ -107,7 +107,7 @@ public:
 private:
 
     /// List of the best combinations attempted so far
-    std::list<BestFit> m_best_fits;
+    std::list<Solution> m_best_fits;
 
     // Best number of bins so far
     unsigned int m_best_n_of_bins;
