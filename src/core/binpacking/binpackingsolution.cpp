@@ -261,6 +261,7 @@ float BestFit::CalculateFitness()
         // inside each bin
         capacity = bins_it->GetMaxSize();
         ocupancy = bins_it->GetCurSize();;
+        std::cout<< "Ocupancy: "<< ocupancy << "\tCapacity: "<< capacity<<std::endl;
         fitness= fitness + pow(((float)ocupancy/(float)capacity),k);
 
     }
