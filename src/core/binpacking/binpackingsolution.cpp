@@ -220,6 +220,7 @@ void BinPackingSolution::PrintStatistics()
 Solution::Solution()
     : m_seconds_taken(0)
     , m_bins()
+    , m_fitness(0)
 {
 
 }
@@ -227,6 +228,7 @@ Solution::Solution()
 Solution::Solution(const long long& seconds_taken)
     : m_seconds_taken(seconds_taken)
     , m_bins(std::vector<Bin>())
+    , m_fitness(0)
 {
 
 }
@@ -234,6 +236,7 @@ Solution::Solution(const long long& seconds_taken)
 Solution::Solution(const std::vector<Bin>& possible_fit, const long long& seconds_taken)
     : m_seconds_taken(seconds_taken)
     , m_bins(possible_fit)
+    , m_fitness(0)
 {
 
 }
@@ -270,5 +273,6 @@ float Solution::CalculateFitness()
     std::cout<< "n_of_bins: "<< n_of_bins<<std::endl;
     std::cout<< "Currently the fitness is: "<< fitness <<std::endl;
 
+    m_fitness = fitness;
     return fitness;
 }

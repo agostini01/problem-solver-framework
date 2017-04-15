@@ -67,6 +67,7 @@ public:
 
 private:
     long long m_seconds_taken;
+	float m_fitness;
     std::vector<Bin> m_bins;
 };
 

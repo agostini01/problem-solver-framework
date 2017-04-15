@@ -13,8 +13,11 @@ libbinpacking_a_SOURCES = \
 	\
 	firstfitsolver.cpp \
 	firstfitsolver.h \
-	#\
+	\
 	#steepestdescentsolver.cpp \
-	#steepestdescentsolver.h
+	#steepestdescentsolver.h \
+	\
+	binpackingneighborhood.cpp \
+	binpackingneighborhood.h	
 
 AM_CXXFLAGS = $(WARN_CXXFLAGS)
