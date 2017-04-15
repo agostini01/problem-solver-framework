@@ -82,7 +82,7 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	do {
 		BinPackingNeighborhood current_neighborhood = BinPackingNeighborhood(problem_weights);
 
-		for (const auto& current_neighbor : current_neighborhood.GetNeighborsList())
+		for (BPNeighbor& current_neighbor : current_neighborhood.GetNeighborsList())
 		{ // This body will execute once for each neighbor
 			std::list<unsigned int> current_problem_weights = current_neighbor.GetProblemWeights();
 			// Create the variables to store a solution
@@ -90,7 +90,7 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 			list_of_bins.push_back(Bin(bucket_capacity));
 
 			// Print can be removed later
-			PrintProblemWeights(current_problem_weights);
+			//PrintProblemWeights(current_problem_weights);
 
 			// Try to fit weights inside the bins
 			for (std::list<unsigned int>::iterator it=current_problem_weights.begin();
@@ -113,30 +113,46 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 				}
 			}
 
-			// We have a possible solution here in list_of_bins
-			//std::cout << "Took: " << GetDuration()<< std::endl;
-			the_solution->Check(list_of_bins,list_of_bins.size(), GetDuration());
 
-			std::cerr << "Fit in " << list_of_bins.size() << " Bins." << std::endl;
-			for (auto it = list_of_bins.begin(); it!=list_of_bins.end()-1;++it)
-			{
-				it->PrintContents();
-			}
-			(list_of_bins.end()-1)->PrintContents();
-			std::cerr<<std::endl;
+			//std::cout<<"*****Number of bins: "<< list_of_bins.size()<<std::endl;
+			current_neighbor.SetBins(list_of_bins);
 
+			// From now on all the neighbors are set and solutions have been calculated
+			// We calculate the fitness and best fitnes to get our next champion
 
-			// Wrap up solution
-			the_solution->IncPermutationsDone();
-
-			if (GetDuration()>m_max_sim_time)
-			{
-				std::cout<< "Run out of time"<<std::endl;
-				the_solution->setFoundOptimal(false);
-				break;
-			}
-			//neighbor->solution = the_solution;
 		}
+
+		current_neighborhood.CalculateBestNeighboorFitness();
+		std::vector<Bin> best_list_of_bins = current_neighborhood.GetBestNeighbor().GetBins();
+		problem_weights = current_neighborhood.GetBestNeighbor().GetProblemWeights(); // Update the weight list for next iteration
+		// We have a possible solution here in best_list_of_bins
+		//std::cout << "Took: " << GetDuration()<< std::endl;
+		std::cout<<"Best neighbor at: "<<current_neighborhood.GetBestPosition()<<
+		           "\t Fitness: "<< current_neighborhood.GetBestFitness()<<std::endl;
+		the_solution->Check(best_list_of_bins,best_list_of_bins.size(), GetDuration());
+
+		std::cerr << "Fit in " << best_list_of_bins.size() << " Bins." << std::endl;
+		for (auto it = best_list_of_bins.begin(); it!=best_list_of_bins.end()-1;++it)
+		{
+			it->PrintContents();
+		}
+		(best_list_of_bins.end()-1)->PrintContents();
+		std::cerr<<std::endl;
+
+		// Wrap up solution
+		the_solution->IncPermutationsDone();
+
+
+		// Reseting the neighborhood (must implement a RESET function)
+
+		if (GetDuration()>m_max_sim_time||IsSameSolutionAsBefore())
+		{
+			std::cout<< "Run out of time"<<std::endl;
+			the_solution->setFoundOptimal(false);
+			break;
+		}
+		//neighbor->solution = the_solution;
+
 		//delete current_neighborhood;
 	} while (true);
 	std::cout<<std::endl;

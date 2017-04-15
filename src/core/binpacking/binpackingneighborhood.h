@@ -35,38 +35,61 @@ public:
 	    , m_list_of_neighbors()
 	    , m_best_neighbor_fitness()
 	{
-		GenerateNeighboorhood();
+		GenerateNeighborhood();
 	}
 
-	void GenerateNeighboorhood()
-	{
-		m_list_of_neighbors.push_back(BPNeighbor(m_original_weights));
-		unsigned problem_size = m_original_weights.size();
-		std::list<std::pair<unsigned, unsigned> > comb_list = Comb2(problem_size);
+	///
+	/// \brief GenerateNeighboorhood sets the member list_of_neighbors
+	/// by doing a combination of the weights
+	///
+	void GenerateNeighborhood();
 
-		for (const auto& p : comb_list)
-		{
-			std::list<unsigned> neighboor_weight_list = m_original_weights;
-			auto pos0 = neighboor_weight_list.begin();
-			auto pos1 = neighboor_weight_list.begin();
-			std::advance(pos0,p.first);
-			std::advance(pos1,p.second);
-			std::iter_swap(pos0,pos1);
-
-			m_list_of_neighbors.push_back(BPNeighbor(neighboor_weight_list));
-
-		}
-		std::cout<<"MY SIZE IS: "<<m_list_of_neighbors.size()<<std::endl;
-
-
-	}
-
+	///
+	/// \brief CalculateBestNeighboorFitness sets the pair best neighbor and fitness
+	/// First it calculates the fitness for every neighbor, and then it selects the
+	/// neighbor with best fitness
+	///
 	void CalculateBestNeighboorFitness()
 	{
+		unsigned best_neighbor_pos=0;
+		float best_neighbor_value=0;
+
+		unsigned current_pos=0;
+		float current_value=0;
+
+		for(BPNeighbor& current_neighbor : m_list_of_neighbors)
+		{
+			current_value = current_neighbor.CalculateFitness();
+			if(current_value>best_neighbor_value)
+			{
+				best_neighbor_value=current_value;
+				best_neighbor_pos=current_pos;
+			}
+			++current_pos;
+		}
+		m_best_neighbor_fitness = std::make_pair(best_neighbor_pos,best_neighbor_value);
 
 	}
 
-	std::list<BPNeighbor> GetNeighborsList();
+	BPNeighbor GetBestNeighbor()
+	{
+		std::list<BPNeighbor>::iterator target_neighbor_it = m_list_of_neighbors.begin();
+		std::advance(target_neighbor_it, m_best_neighbor_fitness.first);
+		return *target_neighbor_it;
+
+	}
+
+	unsigned GetBestPosition()
+	{
+		return m_best_neighbor_fitness.first;
+	}
+
+	float GetBestFitness()
+	{
+		return m_best_neighbor_fitness.second;
+	}
+
+	std::list<BPNeighbor> &GetNeighborsList();
 
 private:
 	std::list<unsigned> m_original_weights;

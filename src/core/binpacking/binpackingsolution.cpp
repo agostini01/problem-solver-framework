@@ -157,7 +157,7 @@ void BinPackingSolution::PrintBestFits()
     for(auto outer_it = m_best_fits.begin(); outer_it!= m_best_fits.end();++outer_it)
     {
         std::cout << "{";
-        std::vector<Bin> sol_bins = outer_it->bins();
+		std::vector<Bin> sol_bins = outer_it->GetBins();
         for (auto it = sol_bins.begin(); it!=sol_bins.end()-1;++it)
         {
             it->PrintContentsFormated();
@@ -241,14 +241,19 @@ Solution::Solution(const std::vector<Bin>& possible_fit, const long long& second
 
 }
 
-std::vector<Bin> Solution::bins() const
+std::vector<Bin> Solution::GetBins() const
 {
     return m_bins;
 }
 
+void Solution::SetBins(std::vector<Bin> list_of_bins)
+{
+	m_bins = list_of_bins;
+}
+
 long long Solution::SecondsTaken() const
 {
-    return m_seconds_taken;
+	return m_seconds_taken;
 }
 
 float Solution::CalculateFitness()
@@ -264,15 +269,15 @@ float Solution::CalculateFitness()
         // inside each bin
         capacity = bins_it->GetMaxSize();
         ocupancy = bins_it->GetCurSize();;
-        std::cout<< "Ocupancy: "<< ocupancy << "\tCapacity: "<< capacity<<std::endl;
+//        std::cout<< "Ocupancy: "<< ocupancy << "\tCapacity: "<< capacity<<std::endl;
         fitness= fitness + pow(((float)ocupancy/(float)capacity),k);
 
     }
     fitness = fitness/n_of_bins;
 
-    std::cout<< "n_of_bins: "<< n_of_bins<<std::endl;
-    std::cout<< "Currently the fitness is: "<< fitness <<std::endl;
+//    std::cout<< "n_of_bins: "<< n_of_bins<<std::endl;
+//    std::cout<< "Currently the fitness is: "<< fitness <<std::endl;
 
-    m_fitness = fitness;
+	m_fitness = fitness;
     return fitness;
 }

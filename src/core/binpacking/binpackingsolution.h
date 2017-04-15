@@ -60,7 +60,8 @@ public:
     Solution(const long long& seconds_taken);
     Solution(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
 
-    std::vector<Bin> bins() const;
+	std::vector<Bin> GetBins() const;
+	void SetBins(std::vector<Bin> list_of_bins);
 
     long long SecondsTaken() const;
     float CalculateFitness();

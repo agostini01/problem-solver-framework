@@ -37,6 +37,10 @@ public:
 	        );
 
 	std::shared_ptr<SolutionContainer> Solve(std::shared_ptr<Problem> the_problem);
+
+	//TODO: Needs implementation
+	bool IsSameSolutionAsBefore(){return false;}
+
 	void SolveAll();
 
 
