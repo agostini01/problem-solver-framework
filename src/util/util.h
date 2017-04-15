@@ -22,6 +22,7 @@
 
 #include <list>
 #include <stdlib.h>
+#include <utility>
 
 /// Returns (int) 1
 int InitialTest();
@@ -38,6 +39,16 @@ std::list<unsigned int> GetRandomList(const unsigned int & list_size);
 void PermuteList(std::list<unsigned int> input_list);
 
 long long Factorial(const unsigned int& n);
+
+void Comb(int N, int K);
+
+///
+/// \brief Comb2 generates a list of pairs that correspond to the
+/// Combination of N elements, 2 in 2.
+/// \param N
+/// \return
+///
+std::list<std::pair<unsigned, unsigned> > Comb2(int N);
 
 
 #endif // UTIL

@@ -20,6 +20,7 @@
 #include "util.h"
 #include <iostream>
 #include <algorithm>
+#include <string>
 #include <memory>
 
 int InitialTest()
@@ -84,4 +85,51 @@ void PermuteList(std::list<unsigned int> input_list)
 long long Factorial(const unsigned int &n)
 {
     return (n == 1 || n == 0) ? 1 : Factorial(n - 1) * n;
+}
+
+void Comb(int N, int K=2)
+{
+	std::string bitmask(K, 1); // K leading 1's
+	bitmask.resize(N, 0); // N-K trailing 0's
+
+	// print integers and permute bitmask
+	do {
+		for (int i = 0; i < N; ++i) // [0..N-1] integers
+		{
+			if (bitmask[i]) std::cout << " " << i;
+		}
+		std::cout << std::endl;
+	} while (std::prev_permutation(bitmask.begin(), bitmask.end()));
+}
+
+std::list<std::pair<unsigned, unsigned> > Comb2(int N)
+{
+	std::list<std::pair<unsigned, unsigned> > comb_list;
+	unsigned elements [2];
+
+	std::string bitmask(2, 1); // 2 leading 1's
+	bitmask.resize(N, 0); // N-2 trailing 0's
+
+	// print integers and permute bitmask
+	do {
+		unsigned count = 0;
+		for (int i = 0; i < N; ++i) // [0..N-1] integers
+		{
+			if (bitmask[i])
+			{
+				elements[count] = i;
+				++count;
+				if (count>=2) break;
+			}
+		}
+		count =0;
+		comb_list.push_back(std::make_pair(elements[0],elements[1]));
+	} while (std::prev_permutation(bitmask.begin(), bitmask.end()));
+
+//	for (const auto& p : comb_list)
+//	{
+//	  std::cout << p.first << ", " << p.second << std::endl;
+//	}
+
+	return comb_list;
 }
