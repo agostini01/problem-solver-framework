@@ -47,9 +47,14 @@ public:
 		for (const auto& p : comb_list)
 		{
 			std::list<unsigned> neighboor_weight_list = m_original_weights;
-			std::iter_swap((neighboor_weight_list.begin())
-			               ,(neighboor_weight_list.begin()));
+			auto pos0 = neighboor_weight_list.begin();
+			auto pos1 = neighboor_weight_list.begin();
+			std::advance(pos0,p.first);
+			std::advance(pos1,p.second);
+			std::iter_swap(pos0,pos1);
+
 			m_list_of_neighbors.push_back(BPNeighbor(neighboor_weight_list));
+
 		}
 		std::cout<<"MY SIZE IS: "<<m_list_of_neighbors.size()<<std::endl;
 
