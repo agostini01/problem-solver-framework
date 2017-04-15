@@ -25,8 +25,7 @@
 #include <algorithm>
 
 #include "binpackingsolution.h"
-
-#include "../../util/util.h" // factorial()
+#include "binpackingneighborhood.h"
 
 SteepestDescentSolver::SteepestDescentSolver(std::vector<std::shared_ptr<Problem>>& problems,
   std::vector<std::shared_ptr<SolutionContainer>>& solutions, long long &max_solver_time)
@@ -79,11 +78,13 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	StartTimer();
 	problem_weights.sort();
 	problem_weights.reverse(); // Reverse sort those weights
-	current_neighborhood = new Neighborhood(problem_weights);
+
 	do {
-		current_neighborhood.calculateNeighbors();
-		do { // This body will execute once for each permutation
-			current_problem_weights = current_neighbor.problem_weights
+		BinPackingNeighborhood current_neighborhood = BinPackingNeighborhood(problem_weights);
+
+		for (const auto& current_neighbor : current_neighborhood.GetNeighborsList())
+		{ // This body will execute once for each neighbor
+			std::list<unsigned int> current_problem_weights = current_neighbor.GetProblemWeights();
 			// Create the variables to store a solution
 			std::vector<Bin> list_of_bins;
 			list_of_bins.push_back(Bin(bucket_capacity));
@@ -134,8 +135,9 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 				the_solution->setFoundOptimal(false);
 				break;
 			}
-			neghbor->solution = the_solution;
-		} while (more neighbors);
+			//neighbor->solution = the_solution;
+		}
+		//delete current_neighborhood;
 	} while (true);
 	std::cout<<std::endl;
 	std::cout<<std::endl;

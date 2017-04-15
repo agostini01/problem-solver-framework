@@ -14,8 +14,8 @@ libbinpacking_a_SOURCES = \
 	firstfitsolver.cpp \
 	firstfitsolver.h \
 	\
-	#steepestdescentsolver.cpp \
-	#steepestdescentsolver.h \
+	steepestdescentsolver.cpp \
+	steepestdescentsolver.h \
 	\
 	binpackingneighborhood.cpp \
 	binpackingneighborhood.h	

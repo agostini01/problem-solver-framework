@@ -30,6 +30,7 @@
 #include "util/fileio.h"
 #include "core/binpacking/exhaustivesolver.h"
 #include "core/binpacking/firstfitsolver.h"
+#include "core/binpacking/steepestdescentsolver.h"
 
 
 
@@ -59,6 +60,7 @@ long long max_solving_time = 60;
 /// Exhaustive solver
 bool exhaustive_solver = false;
 bool firstfit_solver = false;
+bool steepestdescent_solver = false;
 bool bestfit_solver = false;
 bool worstfit_solver = false;
 
@@ -150,6 +152,10 @@ void RegisterOptions(){
             "will attempt to always put the next item on the first availabe "
             "bin, creating a new one if it is not possible. It sorts the "
             "dataset.");
+	command_line->RegisterBool("--steepestdescent",
+	        steepestdescent_solver,
+	        "Runs the solver as a steepest descent solver, where the solver, "
+	        "will attempt to optimize a reversed first fit solution.");
 
 }
 
@@ -190,6 +196,13 @@ int MainLoop(){
         //problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
         problem_solver.SolveAll();
     }
+
+	if(steepestdescent_solver)
+	{
+		SteepestDescentSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+		//problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+		problem_solver.SolveAll();
+	}
 
     return 0;
 

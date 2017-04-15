@@ -6,6 +6,7 @@
 #include <utility>
 #include <algorithm> // swap
 #include "binpackingsolution.h"
+#include <iostream>
 
 #include "../../util/util.h"
 
@@ -16,6 +17,8 @@ public:
 	BPNeighbor(const long long& seconds_taken);
 	BPNeighbor(const std::vector<Bin>& possible_fit, const long long& seconds_taken);
 	BPNeighbor(std::list<unsigned> weights);
+
+	std::list<unsigned> GetProblemWeights() const;
 
 private:
 	std::list<unsigned> m_problem_weights;
@@ -33,7 +36,6 @@ public:
 	    , m_best_neighbor_fitness()
 	{
 		GenerateNeighboorhood();
-		CalculateBestNeighboorFitness();
 	}
 
 	void GenerateNeighboorhood()
@@ -45,8 +47,8 @@ public:
 		for (const auto& p : comb_list)
 		{
 			std::list<unsigned> neighboor_weight_list = m_original_weights;
-			std::iter_swap(neighboor_weight_list.begin() +p.first
-			               ,neighboor_weight_list.begin() +p.second);
+			std::iter_swap((neighboor_weight_list.begin())
+			               ,(neighboor_weight_list.begin()));
 			m_list_of_neighbors.push_back(BPNeighbor(neighboor_weight_list));
 		}
 		std::cout<<"MY SIZE IS: "<<m_list_of_neighbors.size()<<std::endl;
@@ -58,6 +60,8 @@ public:
 	{
 
 	}
+
+	std::list<BPNeighbor> GetNeighborsList();
 
 private:
 	std::list<unsigned> m_original_weights;
