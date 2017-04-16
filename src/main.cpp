@@ -68,6 +68,7 @@ bool worstfit_solver = false;
 
 // Bellow are booleans to select the randomization
 bool randomized_input = false;
+unsigned number_of_temperature_steps = 10;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
@@ -172,6 +173,11 @@ void RegisterOptions(){
             randomized_input,
             "Runs the steepest descent solver with a randomized input.");
 
+	command_line->RegisterUInt32("--sim-annealing-steps <num of steps> (default = 10)",
+	                            number_of_temperature_steps,
+	                            "Number of steps a simulated annealing algorithm will do.");
+
+
 }
 
 /// Process command line
@@ -224,6 +230,7 @@ int MainLoop(){
 	{
 		SimulatedAnnealingSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
 		problem_solver.setRandomized_input(randomized_input);
+		problem_solver.SetNumberOfSteps(number_of_temperature_steps);
 		//problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
 		problem_solver.SolveAll();
 	}

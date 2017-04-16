@@ -36,6 +36,7 @@ SimulatedAnnealingSolver::SimulatedAnnealingSolver(std::vector<std::shared_ptr<P
   , m_start_time(0)
   , m_randomized_input(false)
   , m_max_sim_time(max_solver_time)
+  , m_number_of_temperature_steps(10)
 {
 
 }
@@ -190,7 +191,7 @@ std::shared_ptr<SolutionContainer> SimulatedAnnealingSolver::Solve(std::shared_p
 		}
 		else // k is bigger than zero (temperature still exists)
 		{
-			k = k-K_DECREMENT; // Defined on simulatedannealing.h
+			k = k-(1/(float)m_number_of_temperature_steps); // Defined on simulatedannealing.h
 		}
 
 		//neighbor->solution = the_solution;

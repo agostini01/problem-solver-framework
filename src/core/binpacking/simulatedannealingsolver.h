@@ -20,8 +20,6 @@
 #ifndef SimulatedAnnealingSolver_H
 #define SimulatedAnnealingSolver_H
 
-#define K_DECREMENT 0.1
-
 #include "../solver.h"
 #include "../problem.h"
 #include "../solutioncontainer.h"
@@ -47,6 +45,11 @@ public:
 
     void setRandomized_input(bool randomized_input);
 
+	void SetNumberOfSteps(const unsigned & number_of_temperature_steps)
+	{
+	 m_number_of_temperature_steps = number_of_temperature_steps;
+	}
+
 private:
 
     void StartTimer();
@@ -60,6 +63,8 @@ private:
 	long long m_max_sim_time;
 
     bool m_randomized_input;
+
+	unsigned m_number_of_temperature_steps;
 
 
 	void PrintProblemWeights(const std::list<unsigned int> &problem_weights);
