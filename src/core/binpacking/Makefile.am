@@ -17,6 +17,9 @@ libbinpacking_a_SOURCES = \
 	steepestdescentsolver.cpp \
 	steepestdescentsolver.h \
 	\
+	simulatedannealingsolver.cpp \
+	simulatedannealingsolver.h \
+	\
 	binpackingneighborhood.cpp \
 	binpackingneighborhood.h	
 

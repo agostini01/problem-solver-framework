@@ -133,3 +133,5 @@ std::list<std::pair<unsigned, unsigned> > Comb2(int N)
 
 	return comb_list;
 }
+
+int myrandom(int i) { return std::rand()%i;}

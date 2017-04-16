@@ -31,6 +31,7 @@
 #include "core/binpacking/exhaustivesolver.h"
 #include "core/binpacking/firstfitsolver.h"
 #include "core/binpacking/steepestdescentsolver.h"
+#include "core/binpacking/simulatedannealingsolver.h"
 
 
 
@@ -61,6 +62,7 @@ long long max_solving_time = 60;
 bool exhaustive_solver = false;
 bool firstfit_solver = false;
 bool steepestdescent_solver = false;
+bool simualtedannealing_solver = false;
 bool bestfit_solver = false;
 bool worstfit_solver = false;
 
@@ -159,6 +161,10 @@ void RegisterOptions(){
 	        steepestdescent_solver,
 	        "Runs the solver as a steepest descent solver, where the solver, "
 	        "will attempt to optimize a reversed first fit solution.");
+	command_line->RegisterBool("--simualtedannealing",
+	        simualtedannealing_solver,
+	        "Runs the solver as a steepest descent solver, where the solver, "
+	        "will attempt to optimize a reversed first fit solution.");
 
 
     command_line->setCategory("additional options", "Other options");
@@ -210,6 +216,14 @@ int MainLoop(){
 	{
 		SteepestDescentSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
         problem_solver.setRandomized_input(randomized_input);
+		//problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
+		problem_solver.SolveAll();
+	}
+
+	if(simualtedannealing_solver)
+	{
+		SimulatedAnnealingSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+		problem_solver.setRandomized_input(randomized_input);
 		//problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
 		problem_solver.SolveAll();
 	}

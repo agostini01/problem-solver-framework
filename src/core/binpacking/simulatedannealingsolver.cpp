@@ -17,19 +17,19 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-#include "steepestdescentsolver.h"
+#include "simulatedannealingsolver.h"
 
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include <algorithm>
-
+#include <utility>
 #include "../../util/util.h" // random gen
 
 #include "binpackingsolution.h"
 #include "binpackingneighborhood.h"
 
-SteepestDescentSolver::SteepestDescentSolver(std::vector<std::shared_ptr<Problem>>& problems,
+SimulatedAnnealingSolver::SimulatedAnnealingSolver(std::vector<std::shared_ptr<Problem>>& problems,
   std::vector<std::shared_ptr<SolutionContainer>>& solutions, long long &max_solver_time)
   : m_problems(problems)
   , m_solutions(solutions)
@@ -40,7 +40,7 @@ SteepestDescentSolver::SteepestDescentSolver(std::vector<std::shared_ptr<Problem
 
 }
 
-void SteepestDescentSolver::PrintProblemWeights(
+void SimulatedAnnealingSolver::PrintProblemWeights(
         const std::list<unsigned int>& problem_weights)
 {
 	for (auto it=problem_weights.begin();
@@ -51,7 +51,7 @@ void SteepestDescentSolver::PrintProblemWeights(
 	std::cerr << std::endl;
 }
 
-std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<Problem> the_problem)
+std::shared_ptr<SolutionContainer> SimulatedAnnealingSolver::Solve(std::shared_ptr<Problem> the_problem)
 {
 
 	// Variables used to create a solution
@@ -196,7 +196,7 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	return the_solution;
 }
 
-bool SteepestDescentSolver::IsSameSolutionAsBefore(const std::list<unsigned int> &weights_a, const std::list<unsigned int> &weights_b)
+bool SimulatedAnnealingSolver::IsSameSolutionAsBefore(const std::list<unsigned int> &weights_a, const std::list<unsigned int> &weights_b)
 {
     bool ret_value = true;
     std::list<unsigned int>::const_iterator it1 = weights_a.begin();
@@ -219,7 +219,7 @@ bool SteepestDescentSolver::IsSameSolutionAsBefore(const std::list<unsigned int>
     return ret_value;
 }
 
-void SteepestDescentSolver::SolveAll()
+void SimulatedAnnealingSolver::SolveAll()
 {
 
     std::cerr<<std::endl;
@@ -243,22 +243,22 @@ void SteepestDescentSolver::SolveAll()
 
 }
 
-void SteepestDescentSolver::StartTimer()
+void SimulatedAnnealingSolver::StartTimer()
 {
 	time(&m_start_time);
 }
 
-long long SteepestDescentSolver::GetDuration() const
+long long SimulatedAnnealingSolver::GetDuration() const
 {
 	return difftime(time(0),m_start_time);
 }
 
-long long SteepestDescentSolver::StopTimer() const
+long long SimulatedAnnealingSolver::StopTimer() const
 {
 	return GetDuration();
 }
 
-void SteepestDescentSolver::setRandomized_input(bool randomized_input)
+void SimulatedAnnealingSolver::setRandomized_input(bool randomized_input)
 {
     m_randomized_input = randomized_input;
 }

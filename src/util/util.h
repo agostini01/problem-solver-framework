@@ -24,6 +24,9 @@
 #include <stdlib.h>
 #include <utility>
 
+#include <ctime>        // std::time
+#include <cstdlib>      // std::rand, std::srand
+
 /// Returns (int) 1
 int InitialTest();
 
@@ -49,6 +52,13 @@ void Comb(int N, int K);
 /// \return
 ///
 std::list<std::pair<unsigned, unsigned> > Comb2(int N);
+
+///
+/// \brief myrandom is random generator function:
+/// \param i
+/// \return
+///
+int myrandom (int i);
 
 
 #endif // UTIL
