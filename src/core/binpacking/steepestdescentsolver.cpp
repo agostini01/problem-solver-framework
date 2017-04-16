@@ -77,8 +77,21 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 
 	// Start timing the solution
 	StartTimer();
-	problem_weights.sort();
-	problem_weights.reverse(); // Reverse sort those weights
+    //problem_weights.sort();
+    //problem_weights.reverse(); // Reverse sort those weights
+    std::vector<unsigned> v{ std::begin(problem_weights), std::end(problem_weights) };
+
+    std::random_shuffle(v.begin(), v.end());
+    problem_weights = std::list<unsigned> {std::begin(v), std::end(v)};
+
+    std::cerr <<" List: ";
+    for(const auto & a : problem_weights)
+    {
+        std::cerr << a << " ";
+    }
+
+    std::cerr << std::endl;
+
 
 	do {
         last_problem_weights = problem_weights;
