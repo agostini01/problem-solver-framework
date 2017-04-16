@@ -60,5 +60,9 @@ std::list<std::pair<unsigned, unsigned> > Comb2(int N);
 ///
 int myrandom (int i);
 
+float getRandomFromZeroToOne();
+
+unsigned getRandomInRange(const unsigned & max_range);
+
 
 #endif // UTIL

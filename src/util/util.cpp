@@ -135,3 +135,15 @@ std::list<std::pair<unsigned, unsigned> > Comb2(int N)
 }
 
 int myrandom(int i) { return std::rand()%i;}
+
+float getRandomFromZeroToOne()
+{
+	std::srand (static_cast <unsigned> (std::time(0)));
+	return static_cast <float> (std::rand()) / static_cast <float> (RAND_MAX);
+}
+
+unsigned getRandomInRange(const unsigned &max_range)
+{
+	std::srand (static_cast <unsigned> (std::time(0)));
+	return std::rand()%max_range;
+}

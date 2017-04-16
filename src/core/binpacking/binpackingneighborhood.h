@@ -102,10 +102,13 @@ public:
 
 		// Currently, m_best_neighbor_fitness is a pair that
 		// points to the best neighbor. But we want it to point to a neighbor based on temperature k.
+
+		float previous_fitness = target_neighbor_it->CalculateFitness();
+
 		if (k>0)
 		{
 			// we have to advance the iterator to point to the new neighbor
-			std::advance(target_neighbor_it, GetNeighborPositionBasedOnK(k));
+			std::advance(target_neighbor_it, GetNeighborPositionBasedOnK(k,previous_fitness));
 		}
 		else // k=0 and we convered the sim. annealing algorithm
 		{
@@ -121,9 +124,32 @@ public:
 	/// \param k
 	/// \return
 	///
-	int GetNeighborPositionBasedOnK(const float& k)
+	int GetNeighborPositionBasedOnK(const float& k, const float & previous_fitness)
 	{
-		return 0; // TODO!!! This is what has to change for a unsigned number
+		unsigned n_of_neighbors = m_list_of_neighbors.size();
+		std::list<BPNeighbor>::iterator target_neighbor_it = m_list_of_neighbors.begin();
+		unsigned neighbor_current_displacement;
+
+		float new_fitness;
+		float r = getRandomFromZeroToOne();
+
+		if(r<=k) // Random is smaller than temperature
+		{
+			do // Hence we have to get a bad neighboor
+			{
+				target_neighbor_it = m_list_of_neighbors.begin();
+				neighbor_current_displacement = getRandomInRange(n_of_neighbors);
+				std::advance(target_neighbor_it, neighbor_current_displacement );
+				new_fitness = target_neighbor_it->CalculateFitness();
+
+			} while (new_fitness<previous_fitness);
+			return neighbor_current_displacement;
+		}
+		else
+		{
+			return m_best_neighbor_fitness.first;
+		}
+
 	}
 
 	unsigned GetBestPosition()
