@@ -24,6 +24,12 @@
 #include <vector>
 #include <algorithm>
 
+#include <ctime>        // std::time
+#include <cstdlib>      // std::rand, std::srand
+
+// random generator function:
+int myrandom (int i) { return std::rand()%i;}
+
 #include "binpackingsolution.h"
 #include "binpackingneighborhood.h"
 
@@ -32,6 +38,7 @@ SteepestDescentSolver::SteepestDescentSolver(std::vector<std::shared_ptr<Problem
   : m_problems(problems)
   , m_solutions(solutions)
   , m_start_time(0)
+  , m_randomized_input(false)
   , m_max_sim_time(max_solver_time)
 {
 
@@ -73,24 +80,28 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	std::cout<< "Max Size of Bucket: " << bucket_capacity<<'\n';
 	std::cout<< "Target number of buckets: " << max_number_of_buckets<<'\n';
 
-	std::cerr<< "Item weights: \n";
 
 	// Start timing the solution
 	StartTimer();
-    //problem_weights.sort();
-    //problem_weights.reverse(); // Reverse sort those weights
-    std::vector<unsigned> v{ std::begin(problem_weights), std::end(problem_weights) };
-
-    std::random_shuffle(v.begin(), v.end());
-    problem_weights = std::list<unsigned> {std::begin(v), std::end(v)};
-
-    std::cerr <<" List: ";
-    for(const auto & a : problem_weights)
+    if(m_randomized_input)
     {
-        std::cerr << a << " ";
+        std::vector<unsigned> v{ std::begin(problem_weights), std::end(problem_weights) };
+        std::random_shuffle(v.begin(), v.end(),myrandom);
+        problem_weights = std::list<unsigned> {std::begin(v), std::end(v)};
+        std::cerr<< "Random weights: ";
+        for (const auto & a: problem_weights)
+            std::cerr<< a<<" ";
+        std::cerr<< std::endl;
+    }
+    else // reverse sorted input
+    {
+        problem_weights.sort();
+        problem_weights.reverse(); // Reverse sort those weights
+        for (const auto & a: problem_weights)
+            std::cerr<< a<<" ";
+        std::cerr<< std::endl;
     }
 
-    std::cerr << std::endl;
 
 
 	do {
@@ -249,5 +260,10 @@ long long SteepestDescentSolver::GetDuration() const
 long long SteepestDescentSolver::StopTimer() const
 {
 	return GetDuration();
+}
+
+void SteepestDescentSolver::setRandomized_input(bool randomized_input)
+{
+    m_randomized_input = randomized_input;
 }
 

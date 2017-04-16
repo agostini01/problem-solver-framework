@@ -64,6 +64,9 @@ bool steepestdescent_solver = false;
 bool bestfit_solver = false;
 bool worstfit_solver = false;
 
+// Bellow are booleans to select the randomization
+bool randomized_input = false;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Variable declarations
 ////////////////////////////////////////////////////////////////////////////////
@@ -157,6 +160,12 @@ void RegisterOptions(){
 	        "Runs the solver as a steepest descent solver, where the solver, "
 	        "will attempt to optimize a reversed first fit solution.");
 
+
+    command_line->setCategory("additional options", "Other options");
+    command_line->RegisterBool("--set-random-input",
+            randomized_input,
+            "Runs the steepest descent solver with a randomized input.");
+
 }
 
 /// Process command line
@@ -200,6 +209,7 @@ int MainLoop(){
 	if(steepestdescent_solver)
 	{
 		SteepestDescentSolver problem_solver(g_my_problems, g_my_solutions, max_solving_time);
+        problem_solver.setRandomized_input(randomized_input);
 		//problem_solver.Solve(*g_my_problems.begin()); // To solve only the first problem
 		problem_solver.SolveAll();
 	}

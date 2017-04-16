@@ -43,10 +43,12 @@ public:
 	void SolveAll();
 
 
+    void setRandomized_input(bool randomized_input);
+
 private:
 
-	void StartTimer();
-	long long GetDuration() const;
+    void StartTimer();
+    long long GetDuration() const;
 	long long StopTimer() const;
 
 	time_t m_start_time;
@@ -54,6 +56,8 @@ private:
 	std::vector<std::shared_ptr<SolutionContainer>>&m_solutions;
 
 	long long m_max_sim_time;
+
+    bool m_randomized_input;
 
 
 	void PrintProblemWeights(const std::list<unsigned int> &problem_weights);
