@@ -38,8 +38,7 @@ public:
 
 	std::shared_ptr<SolutionContainer> Solve(std::shared_ptr<Problem> the_problem);
 
-	//TODO: Needs implementation
-	bool IsSameSolutionAsBefore(){return false;}
+    bool IsSameSolutionAsBefore(const std::list<unsigned int> & weights_a,const std::list<unsigned int> & weights_b);
 
 	void SolveAll();
 

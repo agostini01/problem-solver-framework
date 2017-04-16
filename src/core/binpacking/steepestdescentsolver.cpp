@@ -57,6 +57,7 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	unsigned int max_number_of_buckets =  the_problem->GetMaxNumberOfBucketsK();
 	unsigned int problem_id = the_problem->GetProblemId();
 	std::list<unsigned int> problem_weights =  the_problem->GetWeights();
+    std::list<unsigned int> last_problem_weights =  the_problem->GetWeights();
 
 	// Shared solution that will be added to the list of solutions
 	std::shared_ptr<BinPackingSolution> the_solution = std::make_shared<BinPackingSolution>();
@@ -80,6 +81,7 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	problem_weights.reverse(); // Reverse sort those weights
 
 	do {
+        last_problem_weights = problem_weights;
 		BinPackingNeighborhood current_neighborhood = BinPackingNeighborhood(problem_weights);
 
 		for (BPNeighbor& current_neighbor : current_neighborhood.GetNeighborsList())
@@ -145,12 +147,20 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 
 		// Reseting the neighborhood (must implement a RESET function)
 
-		if (GetDuration()>m_max_sim_time||IsSameSolutionAsBefore())
+        if (GetDuration()>m_max_sim_time)
 		{
 			std::cout<< "Run out of time"<<std::endl;
 			the_solution->setFoundOptimal(false);
 			break;
 		}
+
+        if (IsSameSolutionAsBefore(problem_weights, last_problem_weights))
+        {
+            std::cout<< "Break out of loop because same solution as before"<<std::endl;
+            the_solution->setFoundOptimal(false);
+            break;
+        }
+
 		//neighbor->solution = the_solution;
 
 		//delete current_neighborhood;
@@ -166,23 +176,46 @@ std::shared_ptr<SolutionContainer> SteepestDescentSolver::Solve(std::shared_ptr<
 	return the_solution;
 }
 
+bool SteepestDescentSolver::IsSameSolutionAsBefore(const std::list<unsigned int> &weights_a, const std::list<unsigned int> &weights_b)
+{
+    bool ret_value = true;
+    std::list<unsigned int>::const_iterator it1 = weights_a.begin();
+    std::list<unsigned int>::const_iterator it2 = weights_b.begin();
+    do
+    {
+        if (*it1!=*it2)
+        {
+            ret_value = false;
+            break;
+        }
+        ++it1;
+        ++it2;
+
+    } while (it1!=weights_a.end());
+
+    if (ret_value)
+        std::cout<<"Reached Local Maximal"<<std::endl;
+
+    return ret_value;
+}
+
 void SteepestDescentSolver::SolveAll()
 {
 
-  std::cerr<<std::endl;
-  std::cerr<<std::endl;
-  std::cerr<<std::endl;
-  std::cerr<<"#####################################################"<<std::endl;
-  std::cerr<<"=================Starting Solutions=================="<<std::endl;
-  std::cerr<<"#####################################################"<<std::endl;
+    std::cerr<<std::endl;
+    std::cerr<<std::endl;
+    std::cerr<<std::endl;
+    std::cerr<<"#####################################################"<<std::endl;
+    std::cerr<<"=================Starting Solutions=================="<<std::endl;
+    std::cerr<<"#####################################################"<<std::endl;
 
-  for (auto it = m_problems.begin(); it != m_problems.end(); ++it)
-  {
-	// push back the solution for the problem
-	m_solutions.push_back(Solve(*it));
-  }
+    for (auto it = m_problems.begin(); it != m_problems.end(); ++it)
+    {
+        // push back the solution for the problem
+        m_solutions.push_back(Solve(*it));
+    }
 
-//  for (auto it = m_solutions.begin(); it != m_solutions.end(); ++it)
+    //  for (auto it = m_solutions.begin(); it != m_solutions.end(); ++it)
 //  {
 //    // push back the solution for the problem
 //    it->PrintStatistics();
