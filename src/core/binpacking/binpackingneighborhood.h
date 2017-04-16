@@ -79,6 +79,53 @@ public:
 
 	}
 
+	///
+	/// \brief GetNeighborBasedOnTemperature
+	/// \param k is a float that ranges from 0 to 1 and is constantly incremented at each
+	/// new neighborhood
+	/// \return
+	///
+	BPNeighbor GetNeighborBasedOnTemperature(float k)
+	{
+		std::list<BPNeighbor>::iterator target_neighbor_it = m_list_of_neighbors.begin();
+
+		// TODO!!! This function has to change
+
+//		Let s = original neighbor
+//		For k = 0 through kmax (exclusive):
+//			T ← temperature(k ∕ kmax)
+//			Pick a random neighbour, snew ← neighbour(s)
+//			If P(E(s), E(snew), T) ≥ random(0, 1), move to the new state:
+//				s ← snew
+//		Output: the selected neighbor
+
+
+		// Currently, m_best_neighbor_fitness is a pair that
+		// points to the best neighbor. But we want it to point to a neighbor based on temperature k.
+		if (k>0)
+		{
+			// we have to advance the iterator to point to the new neighbor
+			std::advance(target_neighbor_it, GetNeighborPositionBasedOnK(k));
+		}
+		else // k=0 and we convered the sim. annealing algorithm
+		{
+			std::advance(target_neighbor_it, m_best_neighbor_fitness.first);
+		}
+		return *target_neighbor_it;
+
+	}
+
+	///
+	/// \brief GetNeighborPositionBasedOnK returns the displaycement of the new position
+	/// for the iterator that is applied on the neighbors list
+	/// \param k
+	/// \return
+	///
+	int GetNeighborPositionBasedOnK(const float& k)
+	{
+		return 0; // TODO!!! This is what has to change for a unsigned number
+	}
+
 	unsigned GetBestPosition()
 	{
 		return m_best_neighbor_fitness.first;

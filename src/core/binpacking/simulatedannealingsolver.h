@@ -20,6 +20,8 @@
 #ifndef SimulatedAnnealingSolver_H
 #define SimulatedAnnealingSolver_H
 
+#define K_DECREMENT 0.1
+
 #include "../solver.h"
 #include "../problem.h"
 #include "../solutioncontainer.h"

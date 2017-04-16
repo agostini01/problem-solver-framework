@@ -99,7 +99,7 @@ std::shared_ptr<SolutionContainer> SimulatedAnnealingSolver::Solve(std::shared_p
     }
 
 
-
+	float k = 1;
 	do {
         last_problem_weights = problem_weights;
 		BinPackingNeighborhood current_neighborhood = BinPackingNeighborhood(problem_weights);
@@ -145,8 +145,8 @@ std::shared_ptr<SolutionContainer> SimulatedAnnealingSolver::Solve(std::shared_p
 		}
 
 		current_neighborhood.CalculateBestNeighboorFitness();
-		std::vector<Bin> best_list_of_bins = current_neighborhood.GetBestNeighbor().GetBins();
-		problem_weights = current_neighborhood.GetBestNeighbor().GetProblemWeights(); // Update the weight list for next iteration
+		std::vector<Bin> best_list_of_bins = current_neighborhood.GetNeighborBasedOnTemperature(k).GetBins();
+		problem_weights = current_neighborhood.GetNeighborBasedOnTemperature(k).GetProblemWeights(); // Update the weight list for next iteration
 		// We have a possible solution here in best_list_of_bins
 		//std::cout << "Took: " << GetDuration()<< std::endl;
 		std::cout<<"Best neighbor at: "<<current_neighborhood.GetBestPosition()<<
@@ -174,12 +174,24 @@ std::shared_ptr<SolutionContainer> SimulatedAnnealingSolver::Solve(std::shared_p
 			break;
 		}
 
-        if (IsSameSolutionAsBefore(problem_weights, last_problem_weights))
-        {
-            std::cout<< "Break out of loop because same solution as before"<<std::endl;
-            the_solution->setFoundOptimal(false);
-            break;
-        }
+		// This does not apply anymore for simulated annealing
+//        if (IsSameSolutionAsBefore(problem_weights, last_problem_weights))
+//        {
+//            std::cout<< "Break out of loop because same solution as before"<<std::endl;
+//            the_solution->setFoundOptimal(false);
+//            break;
+//        }
+
+		if (k<=0)
+		{
+			std::cout<< "k = 0 and best fitness was selected"<<std::endl;
+			the_solution->setFoundOptimal(false);
+			break;
+		}
+		else // k is bigger than zero (temperature still exists)
+		{
+			k = k-K_DECREMENT; // Defined on simulatedannealing.h
+		}
 
 		//neighbor->solution = the_solution;
 
