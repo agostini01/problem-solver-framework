@@ -142,7 +142,7 @@ public:
 				std::advance(target_neighbor_it, neighbor_current_displacement );
 				new_fitness = target_neighbor_it->CalculateFitness();
 
-			} while (new_fitness<previous_fitness);
+			} while (new_fitness<=previous_fitness);
 			return neighbor_current_displacement;
 		}
 		else
